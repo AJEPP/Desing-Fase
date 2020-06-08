@@ -13,7 +13,7 @@
             $className = $exp[2];
         }
 
-        $sources = array($_SERVER['DOCUMENT_ROOT']."/controllers/".$className.".php", $_SERVER['DOCUMENT_ROOT']."/models/".$className.".php", $_SERVER['DOCUMENT_ROOT']."/models/db/".$className.".php", $_SERVER['DOCUMENT_ROOT']."/models/functions/".$className.".php");
+        $sources = array($_SERVER['DOCUMENT_ROOT']."/controllers/".$className.".php", $_SERVER['DOCUMENT_ROOT']."/models/".$className.".php", $_SERVER['DOCUMENT_ROOT']."/models/db/".$className.".php", $_SERVER['DOCUMENT_ROOT']."/models/functions/".$className.".php",$_SERVER['DOCUMENT_ROOT']."/models/utils/".$className.".php");
 
         foreach ($sources as $source) 
         {

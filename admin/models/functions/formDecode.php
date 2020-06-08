@@ -7,7 +7,7 @@
    * @Version:    $Rev:$ 1.0
    * @Developer:  José Daniel Quijano (jose.quijano55@gmail.com)
    **/
-    namespace Ajepp\Fucntions;
+    namespace Ajepp\Functions;
     
     class FormDecode
     {

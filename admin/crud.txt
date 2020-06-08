@@ -1,0 +1,5 @@
+tipo_vehiculo
+usuario
+cargo
+modelo_vehiculo
+piezas_vehiculo
