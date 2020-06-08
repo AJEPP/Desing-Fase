@@ -5,10 +5,6 @@ class Connection {
  
     public function connect() 
     {
-        /*define('DB_USERNAME', 'biowine');
-        define('DB_PASSWORD', 'biowine2020');
-        define('DB_HOST', 'localhost');
-        define('DB_NAME', 'biowine');*/
         $conn = new \mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 

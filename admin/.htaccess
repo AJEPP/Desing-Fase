@@ -1,0 +1,15 @@
+<IfModule autoindex>
+  IndexIgnore *
+</IfModule>
+
+Options -Indexes
+RewriteOptions inherit
+#
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php 
+
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?view=$1&hash=$2 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?view=$1 [L]
