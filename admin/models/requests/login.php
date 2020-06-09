@@ -13,7 +13,7 @@
    // ini_set('display_errors', '1');
    require_once "../config.php";
    use \Ajepp\Controllers\loginController as lctrl;
-   use \Ajepp\Fucntions\formDecode as frm;
+   use \Ajepp\Functions\formDecode as frm;
 
    $controller = new lctrl();
 

@@ -18,7 +18,7 @@
 
        public function __construct()
        {
-           $this->conn = new \Ajepp\DB\cruDdb();
+           $this->conn = new \Ajepp\DB\crudDb();
        }
 
        public function uerLogin($data)

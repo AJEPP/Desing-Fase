@@ -3,7 +3,7 @@
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'ejepp');
+    define('DB_NAME', 'ajepp');
 
     spl_autoload_register(function($className)
     {
