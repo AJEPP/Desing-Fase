@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>AJEPP LTD<?php echo isset($_GET['view']) ? '::'.strtoupper($_GET['view']) : ''; ?></title>
     <?php include 'includes/header.php'; ?>
 </head>
 
@@ -27,10 +27,10 @@
          
                 echo '</div>';
                 include 'includes/footer.php';
-            echo '</div>';
+            echo '</div>
+            <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>';
         }
         ?>
-        <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <?php 
         include 'includes/scripts.php'; 

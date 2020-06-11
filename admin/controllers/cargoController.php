@@ -5,7 +5,7 @@
     * @File:       cargoController.php
     * @Date:       2020-03-05T12:53:07
     * @Version:    $Rev:$ 1.0
-    * @Developer:  Marlon Anthony Bendliss Chávez. (anthonybendliss7@gmail.com)
+    * @Developer:  José Daniel Quijano (jose.quijano55@gmail.com)
     **/
 
   namespace Ajepp\Controllers;
@@ -34,7 +34,7 @@
             $list.= '<tr>
                         <td>'.$cont.'</td>
                         <td>'.$car->departamento_ajepp_id.'</td>
-                        <td>'.$car->cargo_nombre.'</td>
+                        <td>'.$car->car_nombre.'</td>
                         <td>'.$car->pago_cargo.'</td>
                         <td class = "">
                            <a class ="text-warning edit" href="#" data-id = "'.$car->id.'"><i class="fas fa-edit"></i></a>

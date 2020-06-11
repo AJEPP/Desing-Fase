@@ -9,7 +9,7 @@
    **/
     
     
-    use Ajepp\Controllers\tipovehiculoController as controller;
+    use Ajepp\Controllers\tipoVehiculoController as controller;
     use Ajepp\Models\tipovehiculoModel as usmd;
    
     

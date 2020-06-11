@@ -28,9 +28,9 @@
 
             $list = '';
 
-            while ($depa = $depa->result->fetch_object()) 
+            while ($dep = $depa->result->fetch_object()) 
             {
-                $list.= '<option value="'.$depa->id.'">'.$depa->depa_vehiculo.'</option>';
+                $list.= '<option value="'.$dep->id.'">'.$dep->dep_nombre.'</option>';
             }
 
             echo $list;

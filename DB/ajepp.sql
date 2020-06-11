@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2020 a las 00:02:04
+-- Tiempo de generación: 10-06-2020 a las 23:14:19
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -51,6 +51,14 @@ CREATE TABLE `cargo_ajepp` (
   `car_nombre` varchar(100) DEFAULT NULL,
   `pago_cargo` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cargo_ajepp`
+--
+
+INSERT INTO `cargo_ajepp` (`id`, `departamento_ajepp_id`, `car_nombre`, `pago_cargo`) VALUES
+(2, 1, 'HOLA', 20000),
+(4, 1, 'operador', 30000);
 
 -- --------------------------------------------------------
 
@@ -177,6 +185,13 @@ CREATE TABLE `departamento_ajepp` (
   `dep_locacion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `departamento_ajepp`
+--
+
+INSERT INTO `departamento_ajepp` (`id`, `dep_nombre`, `dep_locacion`) VALUES
+(1, 'cauca', 'hola');
+
 -- --------------------------------------------------------
 
 --
@@ -272,13 +287,13 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`id`, `contenido`, `order`, `estado`) VALUES
 (1, '{\"text\":\"Panel de control\", \"icon\": \"tachometer-alt\", \"link\":\"dashboard\", \"child\": [], \"show\": [1,2,3]}', 1, 'on'),
-(2, '{\"text\":\"Departamentos\", \"icon\": \"tachometer-alt\", \"link\":\"departamento\", \"child\": [], \"show\": [1,2,3]}', 2, 'on'),
-(3, '{\"text\":\"Marca\", \"icon\": \"tachometer-alt\", \"link\":\"marca\", \"child\": [], \"show\": [1,2,3]}', 3, 'on'),
-(4, '{\"text\":\"Tipo Vehiculo\", \"icon\": \"tachometer-alt\", \"link\":\"tipoVehiculo\", \"child\": [], \"show\": [1,2,3]}', 4, 'on'),
-(5, '{\"text\":\"Cargo\", \"icon\": \"tachometer-alt\", \"link\":\"cargo\", \"child\": [], \"show\": [1,2,3]}', 5, 'on'),
-(6, '{\"text\":\"Modelo Vehiculo\", \"icon\": \"tachometer-alt\", \"link\":\"modeloVehiculo\", \"child\": [], \"show\": [1,2,3]}', 6, 'on'),
-(7, '{\"text\":\"Piezas Vehiculo\", \"icon\": \"tachometer-alt\", \"link\":\"piezasVehiculo\", \"child\": [], \"show\": [1,2,3]}', 7, 'on'),
-(8, '{\"text\":\"Usuarios\", \"icon\": \"tachometer-alt\", \"link\":\"usuarios\", \"child\": [], \"show\": [1,2,3]}', 8, 'on');
+(2, '{\"text\":\"Departamentos\", \"icon\": \"arrows-alt\", \"link\":\"departamento\", \"child\": [], \"show\": [1,2,3]}', 2, 'on'),
+(3, '{\"text\":\"Marca Vehiculo\", \"icon\": \"fas fa-bullhorn\", \"link\":\"marca\", \"child\": [], \"show\": [1,2,3]}', 3, 'on'),
+(4, '{\"text\":\"Tipo Vehiculo\", \"icon\": \"fas fa-truck-monster\", \"link\":\"tipoVehiculo\", \"child\": [], \"show\": [1,2,3]}', 4, 'on'),
+(5, '{\"text\":\"Cargo\", \"icon\": \"fas fa-user-plus\", \"link\":\"cargo\", \"child\": [], \"show\": [1,2,3]}', 5, 'on'),
+(6, '{\"text\":\"Modelo Vehiculo\", \"icon\": \"fas fa-car\", \"link\":\"modeloVehiculo\", \"child\": [], \"show\": [1,2,3]}', 6, 'on'),
+(7, '{\"text\":\"Piezas Vehiculo\", \"icon\": \"fas fa-puzzle-piece\", \"link\":\"piezasVehiculo\", \"child\": [], \"show\": [1,2,3]}', 7, 'on'),
+(8, '{\"text\":\"Usuarios\", \"icon\": \"fas fa-users\", \"link\":\"usuarios\", \"child\": [], \"show\": [1,2,3]}', 8, 'on');
 
 -- --------------------------------------------------------
 
@@ -619,7 +634,7 @@ CREATE TABLE `tipo_vehiculo` (
 --
 
 INSERT INTO `tipo_vehiculo` (`id`, `tipo_vehiculo`, `clasificacion_vehiculo`, `vehiculo_img`) VALUES
-(1, 'Terrestre', 'Taxi', NULL);
+(1, 'Terrestre', 'taxi', NULL);
 
 -- --------------------------------------------------------
 
@@ -878,7 +893,7 @@ ALTER TABLE `bodega_tienda`
 -- AUTO_INCREMENT de la tabla `cargo_ajepp`
 --
 ALTER TABLE `cargo_ajepp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `cargo_personal`
@@ -920,7 +935,7 @@ ALTER TABLE `datos_contacto_cliente`
 -- AUTO_INCREMENT de la tabla `departamento_ajepp`
 --
 ALTER TABLE `departamento_ajepp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `detalles_pieza_bodega`
@@ -938,13 +953,13 @@ ALTER TABLE `detalles_pieza_tienda`
 -- AUTO_INCREMENT de la tabla `marca_vehiculo`
 --
 ALTER TABLE `marca_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `modelo_vehiculo`
 --
 ALTER TABLE `modelo_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_ajepp`
@@ -962,7 +977,7 @@ ALTER TABLE `personal_contacto`
 -- AUTO_INCREMENT de la tabla `piezas_vehiculo`
 --
 ALTER TABLE `piezas_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=349;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=351;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
@@ -998,7 +1013,7 @@ ALTER TABLE `tipo_pago`
 -- AUTO_INCREMENT de la tabla `tipo_vehiculo`
 --
 ALTER TABLE `tipo_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo_cliente`

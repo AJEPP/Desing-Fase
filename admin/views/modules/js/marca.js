@@ -1,4 +1,58 @@
-$(document).ready(function() {
+$.validator.setDefaults({
+    ignore: ":hidden:not(.chosen-select)"
+});
+
+
+$(document).ready(function() 
+{
+
+    $("#new_marca").validate(
+    {
+        onsubmit: false,
+        errorClass: "invalid",
+        submitHandler: function (form)
+        {
+            //sendData();
+        },
+        rules:
+        {
+            marca_vehiculo: "required",
+            tipo_vehiculo_id: "required"
+        },
+        messages:
+        {
+            marca_vehiculo: "Ingresa la marca",
+            tipo_vehiculo_id: "Selecciona el tipo de vehículo"
+        },
+        errorElement: "div",
+        errorPlacement: function (error, element)
+        {
+            error.removeClass("error");
+            error.css({'color': 'red'});
+            element.addClass("is-invalid");
+
+            if(element.prop("type") == "select-one")
+            {
+                error.insertAfter($(element).parent('.form-group'));
+            }
+            else
+            {
+                error.insertAfter(element);
+            }
+        },
+        success: function(label, element)
+        {
+            $(element).parent('.form-group').prepend(label);
+        },
+        highlight: function(element, errorClass, validClass)
+        {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function(element, errorClass, validClass)
+        {
+            $(element).addClass("is-valid").removeClass("is-invalid");
+        }
+    });
 
     $('#marca_table').DataTable({
         "language": {
@@ -29,36 +83,19 @@ $(document).ready(function() {
 
     });
 
+    $("#save_marca").click(function (e) { 
+        e.preventDefault();
+        
+        var form = $("#new_marca");
 
-    $(document).on('click', '#save_marca', function() {
+        var validator = form.validate();
 
-        var data = $("#new_marca").serialize();
+        validator.form();
 
-
-        $.post('models/requests/marca.php', { type: 'new_marca', data: data }, function(data) {
-
-            $("#addMarcaModal").modal('hide');
-            $.notify({
-                icon: "check",
-                message: "Correcto! <b> marca creada</b>."
-            }, {
-                type: 'success',
-                timer: 1000,
-                icon_type: 'fas fa-check',
-                placement: {
-                    from: 'top',
-                    align: 'center'
-                }
-            });
-
-
-
-            setTimeout(function() {
-                location.reload();
-            }, 2000);
-
-            // console.log(data);
-        });
+        if(form.valid())
+        {
+            sendData();
+        }
     });
 
     $(document).on('click', '.edit', function() {
@@ -135,8 +172,32 @@ $(document).ready(function() {
         disable_search_threshold: 10
     });
 
-    $.validator.setDefaults({
-        ignore: ":hidden:not(.chosen-select)"
-    });
-
 });
+
+function sendData()
+{
+    var data = $("#new_marca").serialize();
+
+    $.post('models/requests/marca.php', { type: 'new_marca', data: data }, function(data) {
+
+        //$("#addMarcaModal").modal('hide');
+        $.notify({
+            icon: "check",
+            message: "Correcto! <b> marca creada</b>."
+        }, {
+            type: 'success',
+            timer: 1000,
+            icon_type: 'fas fa-check',
+            placement: {
+                from: 'top',
+                align: 'center'
+            }
+        });
+
+        setTimeout(function() {
+            location.reload();
+        }, 2000);
+
+        // console.log(data);
+    });
+}

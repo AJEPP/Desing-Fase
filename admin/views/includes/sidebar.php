@@ -5,14 +5,24 @@
    * @File:       sidebar.php
    * @Date:       2020-03-05T19:19:04
    * @Version:    $Rev:$ 1.0
-   * @Developer:  Marlon Anthony Bendliss Chávez. (anthonybendliss7@gmail.com)
+   * @Developer:  José Daniel Quijano (jose.quijano55@gmail.com)
    **/
 
   namespace Ajepp;
   use \Ajepp\controllers\menuController as mctr;
+
+  $class = '';
+
+  if(isset($_GET['view']))
+  {
+      if($_GET['view'] == 'pos')
+      {
+          $class = 'toggled';
+      }
+  }
 ?>
 
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 <?php echo $class; ?>">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15">

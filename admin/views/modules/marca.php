@@ -5,7 +5,7 @@
    * @File:       facultad.php
    * @Date:       2020-03-25T19:26:04
    * @Version:    $Rev:$ 1.0
-   * @Developer:  Marlon Anthony Bendliss Chávez. (anthonybendliss7@gmail.com)
+   * @Developer:  José Daniel Quijano (jose.quijano55@gmail.com)
    **/
     
     use Ajepp\Utils\tipoVehiculo as tipo;    
@@ -28,7 +28,7 @@
         <div class="card-body">
             <div class="row justify-content-end">
               <div class="col-md-4 text-right">
-                <button class="btn btn-info" id="addMarcaModal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Nueva Facultad</button>
+                <button class="btn btn-info" id="addMarcaModal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Nueva marca</button>
               </div>
             </div>
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -66,13 +66,14 @@
 
             <div class="col-md-6">
               <div class="form-group bmd-form-group">
-                  <label class="bmd-label-floating">Marca Vehiculo</label>
+                  <label class="bmd-label-floating">Marca vehículo</label>
                   <input type="text" class="form-control" name="marca_vehiculo">
                 </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
+                <label class="bmd-label-floating">Tipo de vehículo</label>
                 <select name="tipo_vehiculo_id" data-placeholder="Tipo vehiculo" class="chosen-select">
                     <option value="">Seleccione</option>
                     <?php $tip->getTipovehiculo(); ?>

@@ -10,7 +10,7 @@
 
    namespace Ajepp\Models;
 
-   use Ajepp\DB\CrudDb as db;
+   use Ajepp\DB\crudDb as db;
 
    class MenuModel
    {

@@ -27,9 +27,9 @@
 
     public function addCargo($data)
     {    
-        $cargo = $this->bd->query("INSERT INTO `cargo_ajepp`(`departamento_ajepp_id	`, `car_nombre`,`pago_cargo`) VALUES ('".$data->departamento_ajepp_id."','".$data->car_nombre."','".$data->pago_cargo."')");
+        $cargo = $this->bd->query("INSERT INTO `cargo_ajepp`(`departamento_ajepp_id`, `car_nombre`,`pago_cargo`) VALUES ('".$data->departamento_ajepp_id."','".$data->car_nombre."','".$data->pago_cargo."')");
         
-        // echo "INSERT INTO `cargo_ajepp`(`cargo_ajepp`, `car_nombre`,`pago_cargo`) VALUES ('".$data->Cargo_vehiculo."','','".$data->pago_cargo."')";
+        // echo "INSERT INTO `cargo_ajepp`(`departamento_ajepp_id`, `car_nombre`,`pago_cargo`) VALUES ('".$data->departamento_ajepp_id."','".$data->car_nombre."','".$data->pago_cargo."')";
     }
 
     public function getCargo($id)

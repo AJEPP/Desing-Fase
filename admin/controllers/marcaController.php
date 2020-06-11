@@ -5,7 +5,7 @@
     * @File:       marcaController.php
     * @Date:       2020-03-05T12:53:07
     * @Version:    $Rev:$ 1.0
-    * @Developer:  Marlon Anthony Bendliss Chávez. (anthonybendliss7@gmail.com)
+    * @Developer:  José Daniel Quijano (jose.quijano55@gmail.com)
     **/
 
   namespace Ajepp\Controllers;

@@ -1,11 +1,11 @@
 <?php
    /**
    *
-   * @About:      facultad module
-   * @File:       facultad.php
+   * @About:      Cargo Module
+   * @File:       cargo.php
    * @Date:       2020-03-25T19:26:04
    * @Version:    $Rev:$ 1.0
-   * @Developer:  Marlon Anthony Bendliss Chávez. (anthonybendliss7@gmail.com)
+   * @Developer:  José Daniel Quijano (jose.quijano55@gmail.com)
    **/
     
     use Ajepp\Utils\departamento as depa;    
@@ -28,7 +28,7 @@
         <div class="card-body">
             <div class="row justify-content-end">
               <div class="col-md-4 text-right">
-                <button class="btn btn-info" id="addCargoModal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Nueva Facultad</button>
+                <button class="btn btn-info" id="addcargoModal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Nueva cargo</button>
               </div>
             </div>
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="modal fade bd-example-modal-lg" id="addCargo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="addcargoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -115,7 +115,7 @@
               <label class="bmd-label-floating">Departamento</label>
                 <select name="departamento_ajepp_id" data-placeholder="Tipo vehiculo" class="chosen-select" id="departamento_ajepp_id">
                     <!-- <option value=""></option> -->
-                    <?php $tip->getTipovehiculo(); ?>
+                    <?php $dep->getDepartamento(); ?>
                 </select>
               </div>
             </div>
