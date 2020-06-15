@@ -92,7 +92,7 @@
             <li class="nav-item dropdown no-arrow" role="presentation">
                 <div class="nav-item dropdown no-arrow">
                     <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
-                        <span class="d-none d-lg-inline mr-2 text-gray-600 small"><?php echo $_SESSION['user']->usuario; ?></span>
+                        <span class="d-none d-lg-inline mr-2 text-gray-600 small"><?php echo $_SESSION['user']->per_nombre.' '.$_SESSION['user']->per_apellido; ?></span>
                         <img class="border rounded-circle img-profile" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/img/default_avatar.png">
                     </a>
                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">

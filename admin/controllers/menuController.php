@@ -30,7 +30,7 @@
             {
                 $item = json_decode($menu->contenido);
                 /*var_dump($item);*/
-                if(in_array($_SESSION['user']->personal_ajepp_id, $item->show))
+                if(in_array($_SESSION['user']->cargo_ajepp_id, $item->show))
                 {
                     if(count($item->child) == 0)
                     {
@@ -38,8 +38,8 @@
                         {
                             if($_GET['view'] == $item->link)
                             {
-                                $lista.= '<li class="nav-item bg-info">
-                                    <a class="nav-link" href="'.$item->link.'">
+                                $lista.= '<li class="nav-item active">
+                                    <a class="nav-link active" href="'.$item->link.'">
                                         <i class="fas fa-fw fa-'.$item->icon.' text-white"></i>
                                         <span class ="text-white">'.$item->text.'</span>
                                     </a>
@@ -57,8 +57,9 @@
                         }
                         else
                         {
-                            $lista.= '<li class="nav-item">
-                                <a class="nav-link" href="'.$item->link.'">
+                            $c = $item->link == 'dashboard' ? 'active' : '';
+                            $lista.= '<li class="nav-item '.$c.'">
+                                <a class="nav-link '.$c.'" href="'.$item->link.'">
                                     <i class="fas fa-fw fa-'.$item->icon.'"></i>
                                     <span>'.$item->text.'</span>
                                 </a>
@@ -67,7 +68,7 @@
                     }
                     else
                     {
-
+                        $cl = "";
                         if(isset($_GET['view']))
                         {
                             $links = array();
@@ -78,27 +79,30 @@
 
                             if(in_array($_GET['view'], $links))
                             {
-                                $cl = "bg-info";
+                                $cl = "collapsed active";
+                                $cll = "show";
                             }
                             else
                             {
                                 $cl = "";
+                                $cll = "";
                             }
                         }
 
                         $lista.= '<li class="nav-item collapsed '.$cl.'">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse'.$menu->id_menu.'" aria-expanded="true" aria-controls="collapse'.$menu->id_menu.'">
-                                        <i class="fas fa-fw fa-'.$item->icon.'"></i>
+                                    <a class="nav-link '.$cl.' collapsed" href="#" data-toggle="collapse" data-target="#collapse'.$menu->id.'" aria-expanded="true" aria-controls="collapse'.$menu->id.'">
+                                        <i class="fas fa-'.$item->icon.'"></i>
                                         <span>'.$item->text.'</span>
                                     </a>
-                                    <div id="collapse'.$menu->id_menu.'" class="collapse" aria-labelledby="heading'.$menu->id_menu.'" data-parent="#accordionSidebar">
+                                    <div id="collapse'.$menu->id.'" class="collapse '.$cll.'" aria-labelledby="heading'.$menu->id.'" data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">';
                                     for($i = 0; $i < count($item->child); $i++)
                                     {
-                                        if(in_array($_SESSION['user']->nivel, $item->child[$i]->show))
+                                        if(in_array($_SESSION['user']->cargo_ajepp_id, $item->child[$i]->show))
                                         {
-                                            $lista.= '<a class="collapse-item" href="'.$item->child[$i]->link.'">
-                                            <i class="fas fa-fw fa-'.$item->child[$i]->icon.'"></i>
+                                            $cc = $_GET['view'] == $item->child[$i]->link ? 'active' : '';
+                                            $lista.= '<a class="collapse-item '.$cc.'" href="'.$item->child[$i]->link.'">
+                                            <i class="fas fa-'.$item->child[$i]->icon.'"></i>
                                             '.$item->child[$i]->text.'
                                             </a>';
                                         }

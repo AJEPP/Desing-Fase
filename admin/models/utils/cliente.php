@@ -22,18 +22,25 @@
        }
    
 
-       public function getCliente()
+       public function getClienteSelect()
        {
             $cliente = $this->db->query("SELECT * FROM `cliente` WHERE 1");
 
-            $list = '';
+            $list = '<option value=""></option>';
 
-            while ($cli = $cliente->result->fetch_object()) 
+            if($cliente->result->num_rows > 0)
             {
-                $list.= '<option value="'.$cli->id.'">'.$cli->cli_nombres.'</option>';
+                while ($cli = $cliente->result->fetch_object()) 
+                {
+                    $list.= '<option value="'.$cli->id.'">'.$cli->cli_nombres.' '.$cli->cli_apellidos.'</option>';
+                }
+            }
+            else
+            {
+                $list = '<option value="">No hay clientes registrados</option>';
             }
 
-            echo $list;
+            return $list;
        }
    }
 

@@ -1,125 +1,116 @@
-$(document).ready(function () {
-    
-    var availableTags = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-      ];
-      autocomplete(document.getElementById("product"), availableTags);
+$(document).ready(function () 
+{
+  $('.chosen-select').chosen({
+    allow_single_deselect: true,
+    width: '80%'
+  });
+
+  $.post("models/requests/pos.php", {type: 'initial_data'},
+    function (data) 
+    {
+      console.log(data);
+      $.jqAutocomplete("#product", {
+        data: data.products,
+        objectFilter: 'pie_nombre',
+        onSelected: function(data)
+        {
+          $("#product").val('');
+          addProduct(data);
+        }
+      });
+    },
+    "json"
+  );
+
+  $("#new_client").click(function (e) 
+  { 
+    e.preventDefault();
+    $.jqValidation("#new_client_form", {
+      onSubmit: function()
+      {
+          saveClient();
+      },
+      rules: {
+        name: "required",
+        last_name: "required",
+        id_card: "required",
+        age: "required",
+        gender: "required",
+        city: "required",
+        address: "required"
+      },
+      messages:
+      {
+        name: "Ingresa el nombre",
+        last_name: "Ingresa el apellido",
+        id_card: "Ingresa la cédula",
+        age: "Ingresa la edad",
+        gender: "Ingresa el género",
+        city: "Ingresa la ciudad",
+        address: "Ingresa la dicrección"
+      }
+    });
+    $("#newClientModal").modal('show');
+  });
+
+  $(document).on('click', '.del_prod', function () 
+  {
+    $(this).parent('td').parent('tr').remove();
+    calculateSale();
+  });
+
+  $(document).on('click', '.product', function () 
+  {
+      var data = $(this).data('prod');
+
+      addProduct(data);
+  });
+
 });
 
-function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
-    var currentFocus;
-    /*execute a function when someone writes in the text field:*/
-    inp.addEventListener("input", function(e) {
-        var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
-        closeAllLists();
-        if (!val) { return false;}
-        currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "autocomplete-list");
-        a.setAttribute("class", "autocomplete-items");
-        /*append the DIV element as a child of the autocomplete container:*/
-        this.parentNode.appendChild(a);
-        /*for each item in the array...*/
-        for (i = 0; i < arr.length; i++) {
-          /*check if the item starts with the same letters as the text field value:*/
-          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-            /*create a DIV element for each matching element:*/
-            b = document.createElement("DIV");
-            /*make the matching letters bold:*/
-            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += arr[i].substr(val.length);
-            /*insert a input field that will hold the current array item's value:*/
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            /*execute a function when someone clicks on the item value (DIV element):*/
-            b.addEventListener("click", function(e) {
-                /*insert the value for the autocomplete text field:*/
-                inp.value = this.getElementsByTagName("input")[0].value;
-                /*close the list of autocompleted values,
-                (or any other open lists of autocompleted values:*/
-                closeAllLists();
-            });
-            a.appendChild(b);
+function saveClient()
+{
+  var data = $("#new_client_form").serialize();
+
+  $.post("models/requests/pos.php", {type: 'save_client', data: data},
+    function (data) 
+    {
+      console.log(data);
+      $("#client").chosen("destroy");
+        $("#client").html(data.clients);
+
+        
+        $('#client').chosen({
+          allow_single_deselect: true,
+          width: '80%'
+        });
+
+        $.notify({
+          icon: "check",
+          message: "Correcto! <b> cliente creado</b>."
+          }, {
+          type: 'success',
+          timer: 1000,
+          icon_type: 'fas fa-check',
+          placement: {
+              from: 'top',
+              align: 'center'
           }
-        }
-    });
-    /*execute a function presses a key on the keyboard:*/
-    inp.addEventListener("keydown", function(e) {
-        var x = document.getElementById(this.id + "autocomplete-list");
-        if (x) x = x.getElementsByTagName("div");
-        if (e.keyCode == 40) {
-          /*If the arrow DOWN key is pressed,
-          increase the currentFocus variable:*/
-          currentFocus++;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 38) { //up
-          /*If the arrow UP key is pressed,
-          decrease the currentFocus variable:*/
-          currentFocus--;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 13) {
-          /*If the ENTER key is pressed, prevent the form from being submitted,*/
-          e.preventDefault();
-          if (currentFocus > -1) {
-            /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
-          }
-        }
-    });
-    function addActive(x) {
-      /*a function to classify an item as "active":*/
-      if (!x) return false;
-      /*start by removing the "active" class on all items:*/
-      removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = (x.length - 1);
-      /*add class "autocomplete-active":*/
-      x[currentFocus].classList.add("autocomplete-active");
-    }
-    function removeActive(x) {
-      /*a function to remove the "active" class from all autocomplete items:*/
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
-      }
-    }
-    function closeAllLists(elmnt) {
-      /*close all autocomplete lists in the document,
-      except the one passed as an argument:*/
-      var x = document.getElementsByClassName("autocomplete-items");
-      for (var i = 0; i < x.length; i++) {
-        if (elmnt != x[i] && elmnt != inp) {
-          x[i].parentNode.removeChild(x[i]);
-        }
-      }
-    }
-    /*execute a function when someone clicks in the document:*/
-    document.addEventListener("click", function (e) {
-        closeAllLists(e.target);
-    });
-  }
+      });
+
+      $("#newClientModal").modal('hide');
+      $('#new_client_form')[0].reset();
+    },
+    "json"
+  );
+}
+
+function addProduct(data)
+{
+  $("#product_list").append('<tr><td>' + data.pie_nombre + '</td><td>100.00</td><td><input type="number" class="pq" value= "1"></td><td></td><td><a class ="text-secondary del_prod" href = "#"><i class ="fas fa-trash"><i></a></td></tr>');
+}
+
+function calculateSale()
+{
+
+}

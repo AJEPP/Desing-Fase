@@ -8,7 +8,7 @@
 
         public function __construct()
         {
-            $this->links = array("dashboard", "login","departamento","marca","tipoVehiculo","usuarios","cargo","modeloVehiculo","piezasVehiculo", "usuarios", "pos");
+            $this->links = array("dashboard", "login","departamento","marca","tipoVehiculo","usuarios","cargo","modeloVehiculo","piezasVehiculo", "usuarios", "pos", "proveedores", "salidas", "entradas", "compras");
         }
 
         public function getModule($link)

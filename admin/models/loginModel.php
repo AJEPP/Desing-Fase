@@ -23,7 +23,7 @@
 
        public function uerLogin($data)
        {
-            $login = $this->conn->query("SELECT * FROM `login` WHERE usuario = '".$data->usuario."'");
+            $login = $this->conn->query("SELECT * FROM login lg INNER JOIN personal_ajepp pa ON pa.id = lg.personal_ajepp_id INNER JOIN cargo_personal cp ON pa.id = cp.personal_ajepp_id WHERE lg.usuario = '".$data->usuario."'");
 
            if($login->result->num_rows > 0)
            {
@@ -33,7 +33,7 @@
                 {
                     $_SESSION['user'] = $user;
 
-                    $resp = array('login' => 'ok', 'name' => $user->usuario, 'message' => 'yes');
+                    $resp = array('login' => 'ok', 'name' => $user->per_nombre.' '.$user->per_apellido, 'message' => 'yes');
                 }
                 else
                 {
@@ -44,7 +44,6 @@
            {
                 $resp = array('login' => 'no', 'name' => $data[0]->usuario, 'message' => 'no');
            } 
-
 
            return $resp;
        }

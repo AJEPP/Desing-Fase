@@ -25,7 +25,17 @@
 
        public function getProducts()
        {
-          $products = $this->db->query("SELECT * FROM `piezas_vehiculo` WHERE 1");
+          $products = $this->db->query("SELECT pv.*, 
+                                        (SELECT COUNT(*) 
+                                            FROM detalles_pieza_bodega 
+                                            WHERE piezas_vehiculo_id = pv.id) 
+                                        as in_were, 
+                                        (SELECT COUNT(*) 
+                                            FROM detalles_pieza_tienda 
+                                            WHERE piezas_vehiculo_id = pv.id) 
+                                        as in_store 
+                                        FROM piezas_vehiculo pv 
+                                        WHERE 1");
 
           return $products->result;
        }

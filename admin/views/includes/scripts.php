@@ -16,5 +16,9 @@
 <!-- jQuery Stepper -->
 <script type="text/javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/bs-stepper.min.js"></script>
 
-<!-- jQuery autocomplete -->
-<script type="text/javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/jquery.easy-autocomplete.min.js"></script>
+<!-- Custom autocomplete -->
+<script type="text/javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/autocomplete.js"></script>
+
+<!-- Custom validation file -->
+
+<script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/validations.js"></script>

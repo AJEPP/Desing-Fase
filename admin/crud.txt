@@ -1,0 +1,11 @@
+{
+    "id": "202", 
+    "modelo_vehiculo_id": "1", 
+    "clasificacion_pieza_id": "2", 
+    "pie_nombre": "Llave de Ruedas", 
+    "pie_img": null,  
+    "in_store": "0", 
+    "in_were": "0", 
+    "pie_descripcion": "Todas Num: 09131-28000", 
+    "pie_numero": "09131-28000"
+}

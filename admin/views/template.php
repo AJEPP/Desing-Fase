@@ -26,7 +26,10 @@
         {
          
                 echo '</div>';
+            if($_GET['view'] != 'pos')
+            {
                 include 'includes/footer.php';
+            }
             echo '</div>
             <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>';
         }

@@ -131,4 +131,42 @@ input[type=submit] {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+
+.nav-item a.active
+{
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+}
+.chosen-container-single .chosen-single {
+  height: calc(2.02rem + 2px) !important;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single div:after 
+{
+  top: 0.1rem !important;
+}
+
+.chosen-container-single .chosen-single div:after {
+  top: 0.1rem !important;
+}
+
+#product_list td
+{
+  font-size: 0.9em;
+}
+
+#product_list td input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 2px;
+    font-size: 0.9em;
+    width: 50px;
+    text-align: center;
+}
+/* .collapse-item .active
+{
+  background-color: black;
+  opacity: 0.3;
+  color: #fff;
+} */
 </style>
