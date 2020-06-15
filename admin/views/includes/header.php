@@ -10,6 +10,8 @@
 <link href="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/css/datatable.css" rel="stylesheet">
 <link href="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/css/fileinput.css" rel="stylesheet">
 <link href="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/css/theme.css" rel="stylesheet">
+<link href="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/css/bs-stepper.min.css" rel="stylesheet">
+
 
 <!-- AutoComplete -->
 
