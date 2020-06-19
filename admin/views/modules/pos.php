@@ -85,21 +85,21 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8" id="item-list">
+        <div class="col-md-8 item-list"
             <div class="slimScrollDiv" style="position: relative; overflow-y: auto; width: auto; height: 530px;">
             <div class="items" style="overflow: auto; width: auto; height: 100%;">
                 <div style="text-align: center;">
                         <?php 
 
-                            $prods = $pos->getProductsList();
-                            foreach($prods as $prod)
+                            $brands = $pos->getBrandsList();
+                            foreach($brands as $brand)
                             {
-                                echo '<button class="btn btn-both btn-flat product" data-store = "'.$prod->in_store.'" data-were = "'.$prod->in_were.'" data-id = "'.$prod->id.'" data-prod = "'.htmlspecialchars(json_encode($prod)).'">
+                                echo '<button class="btn btn-both btn-flat brand" data-id = "'.$brand->id.'" data-brand = "'.htmlspecialchars(json_encode($brand)).'">
                                 <span class="bg-img">';
-                                    echo $prod->pie_img == null ? '<img src="http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/default_product.png" alt="'.$prod->pie_nombre.'" style="width: 100px; height: 100px;">' : '<img src="http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/'.$prod->pie_img.'" alt="'.$prod->pie_nombre.'" style="width: 100px; height: 100px;">';
+                                    echo $brand->mar_img == null ? '<img src="http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/default_product.png" alt="'.$brand->marca_vehiculo.'" style="width: 100px; height: 100px;">' : '<img src="http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/'.$brand->mar_img.'" alt="'.$brand->marca_vehiculo.'" style="width: 100px; height: 100px;">';
                                 echo '  </span>
                                     <span>  
-                                        <span>'.$prod->pie_nombre.'</span>
+                                        <span>'.$brand->marca_vehiculo.'</span>
                                     </span>
                                 </button>';
                             }
@@ -182,6 +182,47 @@
               </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="productsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Buscar productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="carouselExampleInterval" class="carousel slide" data-ride="false">
+            <div class="carousel-inner item-list">
+                <div class="carousel-item active text-center">
+                    <div class="spinner-border m-5" role="status" id="models_loading">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="slimScrollDiv hide" id="slimod" style="position: relative; overflow-y: auto; width: auto; height: 300px;">
+                        <div class="items" style="overflow: auto; width: auto; height: 100%;">
+                            <div style="text-align: center;" id="models_cont">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="spinner-border m-5" role="status" id="products_loading">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="slimScrollDiv hide" id="slimprod" style="position: relative; overflow-y: auto; width: auto; height: 300px;">
+                        <div class="items" style="overflow: auto; width: auto; height: 100%;">
+                            <div style="text-align: center;" id="product_cont">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>

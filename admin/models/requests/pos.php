@@ -44,5 +44,21 @@
 
          echo json_encode($resp);
       break;
+
+      case 'get_models':
+
+         $models = $pos->getModelsList($_POST['brand']);
+
+         $resp = (object) array('models' => $models);
+         echo json_encode($resp);
+      break;
+
+      case 'get_products_by_model':
+
+         $products = $pos->getProductsByModel($_POST['model']);
+
+         $resp = (object) array('products' => $products);
+         echo json_encode($resp);
+      break;
    }
 ?>

@@ -25,8 +25,8 @@
 
        public function getProducts()
        {
-          $products = $this->db->query("SELECT pv.*, 
-                                        (SELECT COUNT(*) 
+          $products = $this->db->query("SELECT *, 
+                                            (SELECT COUNT(*) 
                                             FROM detalles_pieza_bodega 
                                             WHERE piezas_vehiculo_id = pv.id) 
                                         as in_were, 
@@ -35,9 +35,44 @@
                                             WHERE piezas_vehiculo_id = pv.id) 
                                         as in_store 
                                         FROM piezas_vehiculo pv 
+                                            INNER JOIN modelo_vehiculo mv ON pv.modelo_vehiculo_id = mv.id
+                                            INNER JOIN marca_vehiculo mh ON mv.marca_vehiculo_id = mh.id
                                         WHERE 1");
 
           return $products->result;
+       }
+
+       public function getBrands()
+       {
+           $brands = $this->db->query("SELECT * FROM `marca_vehiculo` WHERE 1");
+           
+           return $brands->result;
+       }
+
+       public function getModels($brand)
+       {
+           $models = $this->db->query("SELECT * FROM `modelo_vehiculo` WHERE `marca_vehiculo_id` = ".$brand);
+
+           return $models->result;
+       }
+
+       public function getProductsByModel($model)
+       {
+        $products = $this->db->query("SELECT *, 
+                                        (SELECT COUNT(*) 
+                                        FROM detalles_pieza_bodega 
+                                        WHERE piezas_vehiculo_id = pv.id) 
+                                    as in_were, 
+                                    (SELECT COUNT(*) 
+                                        FROM detalles_pieza_tienda 
+                                        WHERE piezas_vehiculo_id = pv.id) 
+                                    as in_store 
+                                    FROM piezas_vehiculo pv 
+                                        INNER JOIN modelo_vehiculo mv ON pv.modelo_vehiculo_id = mv.id
+                                        INNER JOIN marca_vehiculo mh ON mv.marca_vehiculo_id = mh.id
+                                    WHERE pv.modelo_vehiculo_id = ".$model);
+
+            return $products->result;
        }
    }
 ?>

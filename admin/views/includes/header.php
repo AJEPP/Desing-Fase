@@ -71,14 +71,15 @@
     border-width: 1px;
 } */
 
-#item-list .btn{width:120px;text-align:center}
-#item-list .items{height:100%;position:relative;overflow:hidden}
-#item-list .btn-name{width:116px;height:60px;line-height:16px;white-space:pre-wrap;margin:2px}#item-list .btn-both,#item-list .btn-img{background:0 0;padding:3px}
-#item-list .btn-both:hover,
-#item-list .btn-img:hover{background:#CCC}
-#item-list .btn-both .bg-img{background:#FFF;height:110px;padding:5px}
-#item-list .btn-both span{display:block;width:110px;background:#E5E5E5;height:40px;overflow:hidden;/* white-space:pre-wrap; */margin-left:1px}
-#item-list .btn-both span span{display:table-cell;vertical-align:middle;overflow:hidden;white-space:pre-wrap;line-height:16px;padding:3px 2px}
+.item-list .btn{width:120px;text-align:center}
+.item-list .items{height:100%;position:relative;overflow:hidden}
+.item-list .btn-name{width:116px;height:60px;line-height:16px;white-space:pre-wrap;margin:2px}
+.item-list .btn-both,#item-list .btn-img{background:0 0;padding:3px}
+.item-list .btn-both:hover,
+.item-list .btn-img:hover{background:#CCC}
+.item-list .btn-both .bg-img{background:#FFF;height:110px;padding:5px}
+.item-list .btn-both span{display:block;width:110px;background:#E5E5E5;height:40px;overflow:hidden;/* white-space:pre-wrap; */margin-left:1px}
+.item-list .btn-both span span{display:table-cell;vertical-align:middle;overflow:hidden;white-space:pre-wrap;line-height:16px;padding:3px 2px}
 
 /*the container must be positioned relative:*/
 .autocomplete {

@@ -29,11 +29,66 @@
 
             while($product = $products->fetch_object())
             {
+                $product->filter = $product->pie_nombre.' - '.$product->pie_numero.' - '.$product->mod_vehiculo.' - '.$product->mod_anio.' - '.$product->marca_vehiculo;
                 array_push($list, $product);
             }
 
             return $list;
         }
 
+        public function getBrandsList()
+        {
+            $brands = $this->model->getBrands();
+
+            $list = array();
+
+            while($brand = $brands->fetch_object())
+            {
+                array_push($list, $brand);
+            }
+
+            return $list;
+        }
+
+
+        public function getModelsList($brand)
+        {
+            $models = $this->model->getModels($brand);
+
+            $list = array();
+
+            while($model = $models->fetch_object())
+            {
+                if($model->mod_img == null)
+                {
+                    $model->mod_img = 'http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/default_product.png';
+                }
+
+                array_push($list, $model);
+            }
+
+            return $list;
+        }
+
+        public function getProductsByModel($model)
+        {
+            $products = $this->model->getProductsByModel($model);
+
+            $list = array();
+
+            while($product = $products->fetch_object())
+            {
+                if($product->pie_img == null)
+                {
+                    $product->pie_img = 'http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/default_product.png';
+                }
+
+                $product->prod = htmlspecialchars(json_encode($product));
+                $product->filter = $product->pie_nombre.' - '.$product->pie_numero.' - '.$product->mod_vehiculo.' - '.$product->mod_anio.' - '.$product->marca_vehiculo;
+                array_push($list, $product);
+            }
+
+            return $list;
+        }
    }
 ?>

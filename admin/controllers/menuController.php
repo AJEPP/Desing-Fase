@@ -69,6 +69,7 @@
                     else
                     {
                         $cl = "";
+                        $cll = "";
                         if(isset($_GET['view']))
                         {
                             $links = array();
@@ -100,7 +101,7 @@
                                     {
                                         if(in_array($_SESSION['user']->cargo_ajepp_id, $item->child[$i]->show))
                                         {
-                                            $cc = $_GET['view'] == $item->child[$i]->link ? 'active' : '';
+                                            $cc = isset($_GET['view']) ? ($_GET['view'] == $item->child[$i]->link ? 'active' : '') : '';
                                             $lista.= '<a class="collapse-item '.$cc.'" href="'.$item->child[$i]->link.'">
                                             <i class="fas fa-'.$item->child[$i]->icon.'"></i>
                                             '.$item->child[$i]->text.'
