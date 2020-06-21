@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 18, 2020 at 01:23 AM
+-- Generation Time: Jun 21, 2020 at 06:03 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.14
 
@@ -143,7 +143,8 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`id`, `identificacion`, `cli_nombres`, `cli_apellidos`, `cli_edad`, `cli_genero`, `cli_domicilio`, `cli_dirreccion`) VALUES
 (5, '601-262662-6131H', 'Juan', 'Pérez', 39, 'ms', 'Bluefields', 'Barrio San Mateo sector 4 frente a la familia Rojas'),
-(6, '602-150494-000s', 'aurel', 'cuthbert', 25, 'fm', 'fatima', 'fatima');
+(6, '602-150494-000s', 'aurel', 'cuthbert', 25, 'fm', 'fatima', 'fatima'),
+(7, '602-150494-000B', 'Mario', 'Moreno', 30, 'ms', 'Bluefields', 'Fatima');
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,8 @@ CREATE TABLE `departamento_ajepp` (
 
 INSERT INTO `departamento_ajepp` (`id`, `dep_nombre`, `dep_locacion`) VALUES
 (1, 'cauca', 'hola'),
-(2, 'Administración', '');
+(2, 'Administración', ''),
+(4, 'Caja', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -353,16 +355,28 @@ CREATE TABLE `modelo_vehiculo` (
   `mod_vehiculo` varchar(100) NOT NULL,
   `mod_anio` year(4) NOT NULL,
   `mod_img` varchar(45) DEFAULT NULL,
-  `procedencia` varchar(100) DEFAULT NULL
+  `procedencia` varchar(100) DEFAULT NULL,
+  `mob_chasis_tipo` varchar(200) NOT NULL,
+  `mob_motor_cod` varchar(50) DEFAULT NULL,
+  `mob_motor_tam` varchar(50) DEFAULT NULL,
+  `mod_anio_termina` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `modelo_vehiculo`
 --
 
-INSERT INTO `modelo_vehiculo` (`id`, `marca_vehiculo_id`, `mod_vehiculo`, `mod_anio`, `mod_img`, `procedencia`) VALUES
-(1, 1, 'GL-GLS', 2001, NULL, 'Seúl - Corea del Sur'),
-(2, 2, 'K3000S', 2000, NULL, 'Seúl - Corea del Sur');
+INSERT INTO `modelo_vehiculo` (`id`, `marca_vehiculo_id`, `mod_vehiculo`, `mod_anio`, `mod_img`, `procedencia`, `mob_chasis_tipo`, `mob_motor_cod`, `mob_motor_tam`, `mod_anio_termina`) VALUES
+(1, 1, 'GL-GLS', 2001, NULL, 'Corea del Sur', '', '', NULL, NULL),
+(2, 2, 'K3000S', 2000, NULL, 'Corea del Sur', '', '', NULL, NULL),
+(3, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback ', 'G4HCE', '1.0  AT (58 Hp)', 2010),
+(4, 1, ' Atos ', 2003, NULL, 'Corea del Sur', 'Hatchback ', 'G4HD', 'Prime 1.1  AT (59 Hp)', 2011),
+(5, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HCE', '1.0  MT (58 Hp)', 2010),
+(6, 1, 'Atos', 1997, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HC', '1.0  AT (56 Hp)', 2002),
+(7, 1, 'Atos', 1997, NULL, ' \r\nCorea del Sur', 'Hatchback ', 'G4HC', ' 1.0  MT (56 Hp)', 2002),
+(8, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback', NULL, 'Prime 1.0  AT (58 Hp)', 2011),
+(9, 1, 'Atos', 2003, NULL, 'Corea del Sur', 'Hatchback', 'G4HD', 'Prime 1.1  MT (59 Hp) ', 2011),
+(10, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback', NULL, 'Prime 1.0  MT (58 Hp)', 2011);
 
 -- --------------------------------------------------------
 
@@ -695,7 +709,8 @@ CREATE TABLE `tipo_vehiculo` (
 
 INSERT INTO `tipo_vehiculo` (`id`, `tipo_vehiculo`, `clasificacion_vehiculo`, `vehiculo_img`) VALUES
 (1, 'Taxi', 'Terrestre', NULL),
-(2, 'Camión', 'Terrestre', NULL);
+(2, 'Camión', 'Terrestre', NULL),
+(3, 'Personal', 'Terrestre', NULL);
 
 -- --------------------------------------------------------
 
@@ -977,7 +992,7 @@ ALTER TABLE `clasificacion_pieza`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `compra_proveedor`
@@ -1001,7 +1016,7 @@ ALTER TABLE `datos_contacto_cliente`
 -- AUTO_INCREMENT for table `departamento_ajepp`
 --
 ALTER TABLE `departamento_ajepp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `detalles_pieza_bodega`
@@ -1025,7 +1040,7 @@ ALTER TABLE `marca_vehiculo`
 -- AUTO_INCREMENT for table `modelo_vehiculo`
 --
 ALTER TABLE `modelo_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `personal_ajepp`
@@ -1079,7 +1094,7 @@ ALTER TABLE `tipo_pago`
 -- AUTO_INCREMENT for table `tipo_vehiculo`
 --
 ALTER TABLE `tipo_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `vehiculo_cliente`
