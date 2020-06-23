@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 21, 2020 at 06:03 AM
+-- Generation Time: Jun 23, 2020 at 11:17 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.14
 
@@ -118,7 +118,11 @@ INSERT INTO `clasificacion_pieza` (`id`, `pie_img`, `pi_nombre`) VALUES
 (17, NULL, 'Execrical'),
 (18, NULL, 'Seta'),
 (19, NULL, 'Chasis Electrico'),
-(20, NULL, 'Calentador y A/C');
+(20, NULL, 'Calentador y A/C'),
+(21, NULL, 'Calentador y A/C'),
+(22, NULL, 'Cuerpo - Panel de Techo'),
+(23, NULL, 'Cuerpo - Panel de Piso'),
+(24, NULL, 'Cuerpo - Panel Puerta Trasera');
 
 -- --------------------------------------------------------
 
@@ -367,13 +371,13 @@ CREATE TABLE `modelo_vehiculo` (
 --
 
 INSERT INTO `modelo_vehiculo` (`id`, `marca_vehiculo_id`, `mod_vehiculo`, `mod_anio`, `mod_img`, `procedencia`, `mob_chasis_tipo`, `mob_motor_cod`, `mob_motor_tam`, `mod_anio_termina`) VALUES
-(1, 1, 'GL-GLS', 2001, NULL, 'Corea del Sur', '', '', NULL, NULL),
+(1, 1, 'Elentra III', 2001, NULL, 'Corea del Sur', 'Sedan', '', '1.8 (132 Hp) ', 2007),
 (2, 2, 'K3000S', 2000, NULL, 'Corea del Sur', '', '', NULL, NULL),
 (3, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback ', 'G4HCE', '1.0  AT (58 Hp)', 2010),
-(4, 1, ' Atos ', 2003, NULL, 'Corea del Sur', 'Hatchback ', 'G4HD', 'Prime 1.1  AT (59 Hp)', 2011),
+(4, 1, 'Atos ', 2003, NULL, 'Corea del Sur', 'Hatchback ', 'G4HD', 'Prime 1.1  AT (59 Hp)', 2011),
 (5, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HCE', '1.0  MT (58 Hp)', 2010),
-(6, 1, 'Atos', 1997, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HC', '1.0  AT (56 Hp)', 2002),
-(7, 1, 'Atos', 1997, NULL, ' \r\nCorea del Sur', 'Hatchback ', 'G4HC', ' 1.0  MT (56 Hp)', 2002),
+(6, 1, 'Atos', 1997, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HC', 'Genesis 1.0  AT (56 Hp)', 2002),
+(7, 1, 'Atos', 1997, NULL, ' \r\nCorea del Sur', 'Hatchback ', 'G4HC', ' Genesis 1.0  MT (56 Hp)', 2002),
 (8, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback', NULL, 'Prime 1.0  AT (58 Hp)', 2011),
 (9, 1, 'Atos', 2003, NULL, 'Corea del Sur', 'Hatchback', 'G4HD', 'Prime 1.1  MT (59 Hp) ', 2011),
 (10, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback', NULL, 'Prime 1.0  MT (58 Hp)', 2011);
@@ -613,7 +617,76 @@ INSERT INTO `piezas_vehiculo` (`id`, `modelo_vehiculo_id`, `clasificacion_pieza_
 (380, 2, 4, 'Soporte - Montaje del Radiador, Inferior', NULL, '', '0K43A15440A'),
 (381, 2, 4, 'TANK ASSY-RESERVOIR', NULL, '', '0K60A15250C'),
 (382, 2, 4, 'Manguera - Tanque de Reserva de Agua', NULL, '', '0K43A15270A'),
-(383, 2, 4, 'Ventilador - Enfriamiento', NULL, '', '252614Z100');
+(383, 2, 4, 'Ventilador - Enfriamiento', NULL, '', '252614Z100'),
+(403, 7, 6, 'Conjunto de tapa - Llenado de combustible, Cuello de llenado de combustible', NULL, 'Coche especial: [G] GENERAL [+] Códigos opcionales: [+A08] + (TAIWÁN)', '3101024000'),
+(404, 7, 6, 'Soporte - Soporte de montaje de cuello de llenado', NULL, 'Códigos opcionales: [+2WD] PAQUETE DE COMBUSTIBLE (SIN PLOMO)', '3103402000'),
+(405, 7, 6, 'Etiqueta - Puerta de llenado de combustible', NULL, 'Códigos opcionales: [+2WD] PAQUETE DE COMBUSTIBLE (SIN PLOMO)', '3103834500'),
+(406, 7, 6, 'Conjunto de Cuello - Tubo conjunto de llenado de combustible', NULL, 'Códigos opcionales: [+2WD] PAQUETE DE COMBUSTIBLE (SIN PLOMO)', '3104002000'),
+(407, 7, 6, 'Embalaje - Empaque de combustible cuello tanque de combustible junta', NULL, 'Códigos opcionales: [+2GB] PAQUETE DE COMBUSTIBLE (SIN PLOMO)', '3104824000'),
+(408, 7, 6, 'Conjunto de cubierta - Bomba de combustible cubierta A / S', NULL, 'Coche especial: [G] GENERAL', '3110602000'),
+(409, 7, 6, 'Completo - Bomba de combustible conjunto', NULL, 'Coche especial: [G] GENERAL Códigos opcionales: [+ A08] + (TAIWÁN)', '3111002500'),
+(410, 7, 6, 'Conjunto de taza - Tanque de taza de reserva', NULL, 'Coche especial: [G] GENERAL Códigos opcionales: [+ A08] + (TAIWÁN)', '3111402000'),
+(411, 7, 6, 'Placa - Bomba de combustible, Superior', NULL, 'Coche especial: [G] GENERAL', '3111602000'),
+(412, 7, 6, 'Aislador - Bomba de combustible, Aislador', NULL, 'Coche especial: [G] GENERAL', '3111702000'),
+(413, 7, 6, 'Conjunto de bomba de combustible y Soporte', NULL, 'Coche especial: [G] GENERAL', '3111902000'),
+(414, 7, 6, 'Conjunto de tanque - Tanque de combustible', NULL, 'Coche especial: [G] GENERAL, Códigos opcionales: [+ A08] + (TAIWÁN) ', '3115002000'),
+(423, 7, 3, 'Conjunto del motor', NULL, 'Códigos opcionales: [+ 2GB] PAQUETE DE COMBUSTIBLE (SIN PLOMO)', '2110102B00'),
+(424, 7, 3, 'Juego de pares de rodamientos - Cigueñal, STD', NULL, '', '2102002540'),
+(425, 7, 3, 'Cigueñal', NULL, 'Combustible: [D] TRANSMISOR MANUAL Coche especial: [M] ORIENTE MEDIO', '2311102721'),
+(426, 7, 3, 'Piñon - Correa de distrubución de la polea del arbol de levas', NULL, 'Combustible: [D] TRANSMISOR MANUAL', '2312102511'),
+(427, 7, 3, 'Polea - Amortiguador del cigueñal', NULL, 'Combustible: [D] TRANSMISOR MANUAL', '2312402511'),
+(428, 7, 3, 'Conjunto de polea - Palanca del cigueñal', NULL, 'Combustible: [D] TRANSMISOR MANUAL [+]Codigós opcionales: [+9aa] Aire acondicionado', '2313002550'),
+(429, 7, 3, 'Conjunto piston Y PIN, STD  - Conjunto de piston del motor, STD', NULL, 'Códigos opcionales: [+ 2GB] PAQUETE DE COMBUSTIBLE (SIN PLOMO)', '2341002710'),
+(430, 7, 3, 'Conjunto de Bloques - Cilindro conjunto de bloques', NULL, '', '2110002700'),
+(433, 6, 22, 'Panel -  Piso delantero', NULL, 'Combustible: [A] TRANSMISIÓN AUTOMÁTICA', '6511102350'),
+(434, 6, 22, 'Conjunto de refuerzo - Piso delantero trasero ', NULL, '', '6514102300'),
+(435, 10, 3, 'Conjunto de bandeja - Batería Paleta', NULL, 'Códigos opcionales: [371E] Batería - 40AH (MF)', '3715002300'),
+(436, 10, 3, 'Batería Humedad Original 35 AH, Local: [GB] Reino Unido; [IE] Irlanda', NULL, 'Códigos opcionales: [371E] Batería - 40AH (MF)', '3711002100'),
+(437, 10, 3, 'Soporte - Montaje de la batería', NULL, 'Códigos opcionales: [371E] Batería - 40AH (MF)', '3716022000'),
+(438, 10, 3, 'Conjunto de cables - Cable de batería', NULL, 'Transmisión: [B] 5 SPEED MT 2WD', '3721002003'),
+(439, 10, 3, 'Soporte - Montaje de cable de batería', NULL, 'Transmisión: [B] 4 VELOCIDAD EN 2WD', '3716022000'),
+(440, 10, 3, 'PAD - Pedal del acelerador (GAS)', NULL, 'Tipo de control: [R] - CONDUCCIÓN A LA DERECHA', '3272102910'),
+(441, 10, 3, 'Conjunto del brazo - Palanca del Acelerador', NULL, 'Tipo de control: [R] - CONDUCCIÓN A LA DERECHA', '3272002910'),
+(442, 10, 3, 'Resorte - Retorno resorte', NULL, 'Tipo de control: [R] - CONDUCCIÓN A LA DERECHA', '3272502900'),
+(443, 10, 3, 'Conjunto de pedales - Pedal de embrage', NULL, 'Tipo de control: [R] - CONDUCCIÓN A LA DERECHA, Transmisión: [5] 5 SPEED MT 2WD', '3283502900'),
+(444, 10, 3, 'Pedal - Pedal de Freno', NULL, 'Tipo de control: [L] - MANILLAR A LA IZQUIERDA, Transmisión: [B] 4 VELOCIDAD EN 2WD', '3281002710'),
+(445, 10, 3, 'Pedal - Pedal de Freno', NULL, 'Tipo de control: [L] - MANILLAR A LA IZQUIERDA, Transmisión: [5] 5 SPEED MT 2WD', '3281002110'),
+(446, 10, 3, 'Conjunto de Miembros - Embrague ', NULL, 'Tipo de control: [R] - CONDUCCIÓN A LA DERECHA, Transmisión: [5] 5 SPEED MT 2WD', '3283602900'),
+(447, 10, 14, 'Panel - Guardabarros, Panel Izquierdo', NULL, 'Códigos opcionales: [9231] LATERAL DE REPETIDOR [6501] GRADO ALTO', '6631102260'),
+(448, 10, 14, 'Panel - Guardabarros, Panel Derecho', NULL, 'Códigos opcionales: [9231] LATERAL DE REPETIDOR [6501] GRADO ALTO', '6632102260'),
+(449, 10, 14, 'Conjunto de paneles - Panel con capucha', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '6640006010'),
+(450, 10, 14, 'Conjunto de bisagra - Capucha, Gancho LH LOOP', NULL, '', '7911002000'),
+(451, 10, 14, 'Conjunto de bisagra - Capucha, Gancho RH, OL', NULL, '', '7912002000'),
+(452, 10, 14, 'Conjunto de moldeo - Moldedura de extremo de la capa', NULL, 'Cuerpo: [A] 5 DR SEDAN Clase: [G] GRADO ALTO [+] Códigos opcionales: [863C] CR COAT', '8621106000'),
+(453, 10, 15, 'Conjunto de paneles - Puerta delantera, LH', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7600306010'),
+(454, 10, 15, 'Conjunto de paneles - Puerta delantera, Derecha', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7600406010'),
+(455, 10, 15, 'Panel - Puerta delantera exterior, LH', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7611102010'),
+(456, 10, 15, 'Panel - Puerta delantera exterior, Derecha', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7612102010'),
+(457, 10, 15, 'Conjunto de bisagra - Puerta delantera, LH', NULL, '', '7931002000'),
+(458, 10, 15, 'Conjunto de bisagra - Puerta delantera, Derecha', NULL, '', '7932002000'),
+(459, 10, 15, 'Perno M6', NULL, '', '7935921000'),
+(460, 10, 21, 'Conjunto Ferroviario - Trasero cruzado trasero', NULL, '', '6713006000'),
+(461, 10, 21, 'Panel - Azotea del panel', NULL, '', '6711106000'),
+(462, 10, 21, 'Ferrocarril - Centro de techo, Centro de viga transversal del techo', NULL, '', '6712106000'),
+(463, 10, 21, 'Centro Ferroviarrio - Techo delantero Crossbar', NULL, '', '6731006000'),
+(464, 10, 22, 'Panel - Piso delantero', NULL, 'Transmisión: [5] 5 SPEED MT 2WD [+] Códigos opcionales: [6501] GRADO ALTO', '6511102300'),
+(465, 10, 22, 'Conjunto de refuerzo - Piso delantero o trasero', NULL, 'Códigos opcionales: [6501] Grado Alto', '6514102301'),
+(466, 10, 22, 'Refuerzo - Montaje de ESPS', NULL, '', '6514502000'),
+(467, 10, 22, 'Conjunto cruzado - Cruz cruzada del asiento delantero antes de LED', NULL, 'Transmisión: [5] 5 SPEED MT 2WD [+] Códigos opcionales: [6501] GRADO ALTO', '6516102300'),
+(468, 10, 22, 'Conjunto de paneles - Almohadilla lateral interior, LH', NULL, '', '6517002001'),
+(469, 10, 22, 'Conjunto de paneles - Almohadilla lateral interior, Derecha', NULL, '', '6518002001'),
+(470, 10, 22, 'Conjunto de miembros - Piso delantero lado, LH ', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '6521002301'),
+(471, 10, 22, 'Conjunto de miembros - Piso delantero lado, Derecha ', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '6522002301'),
+(472, 10, 22, 'Panel - Suelo Trasero', NULL, '', '6551102060'),
+(473, 10, 22, 'Soporte - Soporte de Montaje en Jack', NULL, '', '6552602000'),
+(474, 10, 23, 'Conjunto de Paneles - Puerta trasera, LH', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7700306010'),
+(475, 10, 23, 'Conjunto de Paneles - Puerta trasera, Derecha', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7700406010'),
+(476, 10, 23, 'Panel - Puerta trasera exterior, LH', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7711102011'),
+(477, 10, 23, 'Panel - Puerta trasera exterior, Derecha', NULL, 'Códigos opcionales: [6501] GRADO ALTO', '7712102011'),
+(478, 10, 23, 'Conjunto de bisagra - Puerta Trasera superior, Conjunto de bisagra IZQUIERDA', NULL, '', '7933002000'),
+(479, 10, 23, 'Conjunto de bisagra - Puerta Trasera superior, Conjunto de bisagra DERECHA', NULL, '', '7934002000'),
+(480, 10, 23, 'Conjunto de bisagra - Puerta Trasera inferior, Conjunto de bisagra IZQUIERDA', NULL, '', '7935002000'),
+(481, 10, 23, 'Conjunto de bisagra - Puerta Trasera inferior, Conjunto de bisagra DERECHA', NULL, '', '7936002000');
 
 -- --------------------------------------------------------
 
@@ -896,7 +969,6 @@ ALTER TABLE `personal_contacto`
 --
 ALTER TABLE `piezas_vehiculo`
   ADD PRIMARY KEY (`id`,`modelo_vehiculo_id`,`clasificacion_pieza_id`),
-  ADD UNIQUE KEY `pie_numero_UNIQUE` (`pie_numero`),
   ADD KEY `fk_piezas_vehiculo_modelo_vehiculo1_idx` (`modelo_vehiculo_id`),
   ADD KEY `fk_piezas_vehiculo_clasificacion_pieza1_idx` (`clasificacion_pieza_id`);
 
@@ -986,7 +1058,7 @@ ALTER TABLE `cargo_personal`
 -- AUTO_INCREMENT for table `clasificacion_pieza`
 --
 ALTER TABLE `clasificacion_pieza`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `cliente`
@@ -1058,7 +1130,7 @@ ALTER TABLE `personal_contacto`
 -- AUTO_INCREMENT for table `piezas_vehiculo`
 --
 ALTER TABLE `piezas_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=384;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=482;
 
 --
 -- AUTO_INCREMENT for table `proveedor`
