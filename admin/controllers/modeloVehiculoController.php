@@ -9,7 +9,7 @@
     **/
 
   namespace Ajepp\Controllers;
-  
+
   use Ajepp\Models\modeloVehiculoModel as modeloVehiculoModel;
 
   class modeloVehiculoController
@@ -50,8 +50,8 @@
 
     public function addmodeloVehiculo($data)
     {
-        $add = $this->model->addmodeloVehiculo($data);  
-        return $add;     
+        $add = $this->model->addmodeloVehiculo($data);
+        return $add;
     }
 
     public function getmodeloVehiculo($id)
@@ -68,10 +68,43 @@
          return $rsp;
       }
 
+      public function getmodeloVehiculoDatos($id)
+        {
+           $modelo = $this->model->getModeloVehiculoDatos($id);
+           $list= array();
+           while($modelos = $modelo->result->fetch_object())
+           {
+             $list []=(object) array("name"=>$modelos->mod_vehiculo);
+           }
+           return $list;
+        }
+
+      public function getmodeloVehiculoAnio($id)
+        {
+           $modelo = $this->model->getModeloVehiculoAnio($id);
+           $list= array();
+           while($modelos = $modelo->result->fetch_object())
+           {
+             $list []=(object) array("inicio"=>$modelos->inicio, "termina"=>$modelos->termina);
+           }
+           return $list;
+        }
+
+        public function getmodeloVehiculoMotor($id, $modelo, $marca)
+          {
+             $modelo = $this->model->getModeloVehiculoMotor($id, $modelo, $marca);
+             $list= array();
+             while($modelos = $modelo->result->fetch_object())
+             {
+               $list []=(object) array("motor"=>$modelos->mob_motor_tam);
+             }
+             return $list;
+          }
+
       public function editmodeloVehiculo($data)
       {
          $edit = $this->model->editmodeloVehiculo($data);
-         return $edit;     
+         return $edit;
       }
 
       public function deletemodeloVehiculo($id)

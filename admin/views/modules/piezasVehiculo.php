@@ -5,15 +5,17 @@
    * @File:       piezaVehiculo.php
    * @Date:       2020-03-25T19:26:04
    * @Version:    $Rev:$ 1.0
-   * @Developer:   Jose Daniel quijano 
+   * @Developer:   Jose Daniel quijano
    **/
-    
-    use Ajepp\Utils\modeloVehiculo as model; 
-    use Ajepp\Utils\clasificacionPieza as clasi;    
+
+    use Ajepp\Utils\modeloVehiculo as model;
+    use Ajepp\Utils\marcaVehiculo as marca;
+    use Ajepp\Utils\clasificacionPieza as clasi;
     use Ajepp\Controllers\piezasVehiculoController as controller;
     use Ajepp\Models\piezasVehiculoModel as usmd;
-   
+
     $mod = new model();
+    $mar = new marca();
     $cla = new clasi();
     $ctr = new controller();
     $depar = new usmd();
@@ -29,10 +31,17 @@
         </div>
         <div class="card-body">
             <div class="row justify-content-end">
+
+              <div class="col-md-4 text-left">
+                <button class="btn btn-info" id="buscarpiezaVehiculoModal" data-toggle="modal" data-target=".buscar_pieza"><i class="fas fa-plus"></i> Buscar Pieza</button>
+              </div>
+
               <div class="col-md-4 text-right">
                 <button class="btn btn-info" id="addpiezaVehiculoModal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Nuevo piezaVehiculo</button>
               </div>
+
             </div>
+
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                 <table class="table dataTable my-0" id="piezaVehiculo_table" style="width:100%; padding: 20px;">
                     <thead>
@@ -109,7 +118,7 @@
 </div>
 
 
-<div class="modal fade bd-example-modal-lg" id="EditpiezaVehiculoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg edit_modal" id="EditpiezaVehiculoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -152,13 +161,96 @@
                   <input type="text" class="form-control" name="pie_descripcion" id="pie_descripcion">
                 </div>
             </div>
-            
+
           </div>
           <input type="hidden" id="id" name="id">
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="update_piezaVehiculo">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg buscar_pieza" id=BuscarPiezaVehiculo tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Buscar Pieza de Vehiculo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return false;" id="buscar_piezaVehiculo">
+          <div class="row justify-content-center">
+
+            <div class="col-md-6">
+              <div class="form-group">
+              <label class="bmd-label-floating">Marca Vehiculo</label>
+                <select name="marca_vehiculo_id" data-placeholder="Tipo vehiculo" class="chosen-select" id="marca_vehiculo_buscar">
+                    <?php $mar->getMarcavehiculo(); ?>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+              <label class="bmd-label-floating">Modelo vehiculo</label>
+                <select name="modelo_vehiculo_id" data-placeholder="Tipo vehiculo" class="form-control" id="tipo_vehiculo_buscar">
+                    <!-- <option value=""></option> -->
+                    <?php //$mod->getModelovehiculo(); ?>
+                </select>
+              </div>
+            </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                <label class="bmd-label-floating">Año Vehiculo</label>
+                  <select name="anio_vehiculo_id" data-placeholder="Año vehiculo" class="form-control" id="anio_vehiculo_buscar">
+                      <!-- <option value=""></option> -->
+                      <?php //$mod->getModelovehiculo(); ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                <label class="bmd-label-floating">Tamaño de Motor</label>
+                  <select name="motor_vehiculo_id" data-placeholder="Motor del vehiculo" class="form-control" id="motor_vehiculo_buscar">
+                      <!-- <option value=""></option> -->
+                      <?php //$mod->getModelovehiculo(); ?>
+                  </select>
+                </div>
+              </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+              <label class="bmd-label-floating">Clasificación Pieza</label>
+                <select name="clasificacion_pieza_buscar" data-placeholder="Tipo vehiculo" class="chosen-select" id="clasificacion_pieza_buscar">
+                    <!-- <option value=""></option> -->
+                    <?php $cla->getClasificacionPieza(); ?>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Nombre pieza</label>
+                  <select class="form-control" name="pie_nombre_buscar" id="pie_nombre_buscar">
+
+                  </select>
+                <!--  <input type="text" class="form-control" name="pie_nombre" id="pie_nombre_buscar"> -->
+                </div>
+            </div>
+
+
+          </div>
+          <input type="hidden" id="id_buscar" name="id">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="buscar_piezaVehiculo">Buscar</button>
       </div>
     </div>
   </div>

@@ -8,8 +8,8 @@
     * @Developer:  Jose Daniel quijano
     **/
   namespace Ajepp\Models;
- 
-  use Ajepp\DB\cruddb as crud;
+
+  use Ajepp\DB\crudDb as crud;
   class PiezasVehiculoModel
   {
     private $bd;
@@ -26,15 +26,41 @@
     }
 
     public function addPiezasVehiculo($data)
-    {    
+    {
         $pieza = $this->bd->query("INSERT INTO `piezas_vehiculo`(`modelo_vehiculo_id`, `clasificacion_pieza_id`, `pie_nombre`, `pie_descripcion`) VALUES ('".$data->modelo_vehiculo_id."','".$data->clasificacion_pieza_id."','".$data->pie_nombre."','".$data->pie_descripcion."')");
-        
+
         // echo "INSERT INTO `piezas_vehiculo`(`modelo_vehiculo_id`, `clasificacion_pieza_id`, `pie_nombre`, `pie_descripcion`) VALUES ('".$data->modelo_vehiculo_id."','".$data->clasificacion_pieza_id."','".$data->pie_nombre."','".$data->pie_descripcion."')";
     }
 
     public function getPiezasVehiculo($id)
     {
-        $pieza = $this->bd->query("SELECT * FROM `piezas_vehiculo` WHERE id = ".$id); 
+        $pieza = $this->bd->query("SELECT * FROM `piezas_vehiculo` WHERE id = ".$id);
+        return $pieza;
+        // $sql = "SELECT * FROM `departamento_ajepp` WHERE id = ".$id;
+        // return $sql;
+    }
+
+    public function getPiezasVehiculoFiltro($marca, $modelo, $fechas, $motor, $clas)
+    {
+        $fecha = explode("-", $fechas);
+        //$pieza = $this->bd->query("SELECT DISTINCT `pie_nombre` from `piezas_vehiculo` WHERE piezas_vehiculo.clasificacion_pieza_id=".$clas);
+      $pieza = $this->bd->query("SELECT DISTINCT `pie_nombre` from `piezas_vehiculo` inner join `clasificacion_pieza` on piezas_vehiculo.clasificacion_pieza_id = clasificacion_pieza.id
+                                    inner join `modelo_vehiculo` on modelo_vehiculo.id = piezas_vehiculo.modelo_vehiculo_id inner join marca_vehiculo on
+                                    marca_vehiculo.id = modelo_vehiculo.marca_vehiculo_id where marca_vehiculo.id =".$marca." AND modelo_vehiculo.mod_vehiculo='".$modelo."' AND
+                                    modelo_vehiculo.mod_anio ='".$fecha[0]."' and modelo_vehiculo.mod_anio_termina='".$fecha[1]."' and modelo_vehiculo.mob_motor_tam ='".$motor."' and clasificacion_pieza.id=".$clas);
+        return $pieza;
+        // $sql = "SELECT * FROM `departamento_ajepp` WHERE id = ".$id;
+        // return $sql;
+    }
+
+    public function getPiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre)
+    {
+        $fecha = explode("-", $fechas);
+        //$pieza = $this->bd->query("SELECT DISTINCT `pie_nombre` from `piezas_vehiculo` WHERE piezas_vehiculo.clasificacion_pieza_id=".$clas);
+      $pieza = $this->bd->query("SELECT `pie_nombre`, `pie_descripcion` from `piezas_vehiculo` inner join `clasificacion_pieza` on piezas_vehiculo.clasificacion_pieza_id = clasificacion_pieza.id
+                                    inner join `modelo_vehiculo` on modelo_vehiculo.id = piezas_vehiculo.modelo_vehiculo_id inner join marca_vehiculo on
+                                    marca_vehiculo.id = modelo_vehiculo.marca_vehiculo_id where marca_vehiculo.id =".$marca." AND modelo_vehiculo.mod_vehiculo='".$modelo."' AND
+                                    modelo_vehiculo.mod_anio ='".$fecha[0]."' and modelo_vehiculo.mod_anio_termina='".$fecha[1]."' and modelo_vehiculo.mob_motor_tam ='".$motor."' and clasificacion_pieza.id=".$clas." and piezas_vehiculo.pie_nombre='".$nombre."'");
         return $pieza;
         // $sql = "SELECT * FROM `departamento_ajepp` WHERE id = ".$id;
         // return $sql;
@@ -42,7 +68,7 @@
 
     public function editPiezasVehiculo($data)
     {
-     
+
         $pieza = $this->bd->query("UPDATE `piezas_vehiculo` SET `modelo_vehiculo_id`='".$data->modelo_vehiculo_id."', `clasificacion_pieza_id`='".$data->clasificacion_pieza_id."',`pie_nombre`='".$data->pie_nombre."',  `pie_descripcion`='".$data->pie_descripcion."' WHERE id = ".$data->id);
         //   echo "UPDATE `Departamento_vehiculo` SET `nombre`='".$data->nombre."',`id`='".$data->id."' WHERE id = ".$data->id;
     }

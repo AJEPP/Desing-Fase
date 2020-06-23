@@ -13,7 +13,7 @@
 
    error_reporting(E_ALL);
    ini_set('display_errors', '1');
-   
+
 
    use Ajepp\Controllers\modeloVehiculoController as ustrl;
 
@@ -22,7 +22,7 @@
    $controller = new ustrl();
    // $userModel = new usmd();
    $decode = new frm();
-   
+
    switch($_POST['type'])
    {
 
@@ -34,9 +34,9 @@
       break;
 
       case 'get_modeloVehiculo':
-         
+
          $edit = $controller->getModeloVehiculo($_POST['id']);
-         
+
          if($edit->error == true)
          {
             $resp = (object) array('error' => true, 'message' => 'modelo Vehiculo no encontrada', 'data' => null);
@@ -50,16 +50,40 @@
       //   echo $edit;
       break;
 
+      case 'get_modeloVehiculoNombre':
+
+         $edit = $controller->getModeloVehiculoDatos($_POST['id']);
+         $data =(object)array("data" => $edit);
+         echo json_encode($data);
+      //   echo $edit;
+      break;
+
+      case 'get_modeloVehiculoAnio':
+
+         $edit = $controller->getModeloVehiculoAnio($_POST['id']);
+         $data =(object)array("data" => $edit);
+         echo json_encode($data);
+      //   echo $edit;
+      break;
+
+      case 'get_modeloVehiculoMotor':
+
+         $edit = $controller->getModeloVehiculoMotor($_POST['fechas'], $_POST['modelo'], $_POST['marca']);
+         $data =(object)array("data" => $edit);
+         echo json_encode($data);
+      //   echo $edit;
+      break;
+
       case 'edit_modeloVehiculo':
-         
+
          $form = $decode->getFormData($_POST['data']);
          $depa = $controller->editmodeloVehiculo($form);
       break;
 
       case 'delete_modeloVehiculo':
-         
+
          $delete = $controller->deleteModeloVehiculo($_POST['id']);
-         
+
          if($delete->error == true)
          {
             $resp = (object) array('error' => true, 'message' => 'modelo Vehiculo no eliminada', 'data' => null);
@@ -73,6 +97,6 @@
       break;
 
    }
-   
+
 
 ?>

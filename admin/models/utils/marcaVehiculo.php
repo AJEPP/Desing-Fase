@@ -7,7 +7,7 @@
       * @Version:    $Rev:$ 1.0
       * @Developer:  Marlon Anthony Bendliss
    **/
-    
+
    namespace Ajepp\Utils;
 
    use \Ajepp\DB\cruddb as db;
@@ -20,15 +20,15 @@
        {
            $this->db = new db();
        }
-   
+
 
        public function getMarcaVehiculo()
        {
             $marca = $this->db->query("SELECT * FROM `marca_vehiculo` WHERE 1");
 
-            $list = '';
+            $list = '<option value="null">Select Marca</option>';
 
-            while ($mar = $marca->result->fetch_object()) 
+            while ($mar = $marca->result->fetch_object())
             {
                 $list.= '<option value="'.$mar->id.'">'.$mar->marca_vehiculo.'</option>';
             }

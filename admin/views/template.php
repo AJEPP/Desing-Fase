@@ -19,12 +19,12 @@
                 include 'includes/navbar.php';
         }
                     use \Ajepp\Controllers\linksController as mvc;
-                    $module = new mvc();  
+                    $module = new mvc();
 
                     $module->setModules();
         if(isset($_SESSION['user']))
         {
-         
+
                 echo '</div>';
             if($_GET['view'] != 'pos')
             {
@@ -35,11 +35,11 @@
         }
         ?>
     </div>
-    <?php 
-        include 'includes/scripts.php'; 
-        
+    <?php
+        include 'includes/scripts.php';
+
         echo $module->setScript();
     ?>
 </body>
-
+<script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/modules/js/piezasVehiculo.js"></script>
 </html>

@@ -7,8 +7,7 @@
 <script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/bootstrap-notify.js"></script>
 <script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/chosen.jquery.min.js"></script>
 <script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/datatables.min.js"></script>
-<script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/sb-admin-2.js"></script>
-<script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/sb-admin-2.min.js"></script>
+
 
 <!-- Forms Validations Plugin -->
 <script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/views/assets/js/jquery.validate.min.js"></script>

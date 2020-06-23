@@ -1,4 +1,4 @@
-$(document).ready(function () 
+$(document).ready(function ()
 {
   $('.chosen-select').chosen({
     allow_single_deselect: true,
@@ -6,7 +6,7 @@ $(document).ready(function ()
   });
 
   $.post("models/requests/pos.php", {type: 'initial_data'},
-    function (data) 
+    function (data)
     {
       console.log(data);
       $.jqAutocomplete("#product", {
@@ -22,8 +22,8 @@ $(document).ready(function ()
     "json"
   );
 
-  $("#new_client").click(function (e) 
-  { 
+  $("#new_client").click(function (e)
+  {
     e.preventDefault();
     $.jqValidation("#new_client_form", {
       onSubmit: function()
@@ -53,13 +53,13 @@ $(document).ready(function ()
     $("#newClientModal").modal('show');
   });
 
-  $(document).on('click', '.del_prod', function () 
+  $(document).on('click', '.del_prod', function ()
   {
     $(this).parent('td').parent('tr').remove();
     calculateSale();
   });
 
-  $(document).on('click', '.product', function () 
+  $(document).on('click', '.product', function ()
   {
     $("#productsModal").modal('hide');
       var data = $(this).data('prod');
@@ -67,12 +67,12 @@ $(document).ready(function ()
       addProduct(data);
   });
 
-  $(document).on('click', '.brand' ,function () 
+  $(document).on('click', '.brand' ,function ()
   {
     $("#productsModal").modal('show');
 
     $.post("models/requests/pos.php", {type: 'get_models', brand: $(this).data('id')},
-      function (data) 
+      function (data)
       {
         console.log(data);
         $("#models_cont").html('');
@@ -91,12 +91,12 @@ $(document).ready(function ()
     );
   });
 
-  $(document).on('click', '.model' ,function () 
+  $(document).on('click', '.model' ,function ()
   {
     $("#productsModal").modal('show');
 
     $.post("models/requests/pos.php", {type: 'get_products_by_model', model: $(this).data('id')},
-      function (data) 
+      function (data)
       {
         console.log(data);
         $("#product_cont").html('');
@@ -117,6 +117,8 @@ $(document).ready(function ()
     );
   });
 
+
+
 });
 
 function saveClient()
@@ -124,13 +126,13 @@ function saveClient()
   var data = $("#new_client_form").serialize();
 
   $.post("models/requests/pos.php", {type: 'save_client', data: data},
-    function (data) 
+    function (data)
     {
       console.log(data);
       $("#client").chosen("destroy");
         $("#client").html(data.clients);
 
-        
+
         $('#client').chosen({
           allow_single_deselect: true,
           width: '80%'
@@ -159,7 +161,7 @@ function saveClient()
 function addProduct(data)
 {
   console.log(data);
-  $("#product_list").append('<tr><td>' + data.pie_nombre + '</td><td><input type="number" class="pp" value= "1"></td><td><input type="number" class="pq" value= "1"></td><td></td><td><a class ="text-secondary del_prod" href = "#"><i class ="fas fa-trash"><i></a></td></tr>');
+  $("#product_list").append('<tr><td>' + data + '</td><td><input type="number" class="pp" value= "1"></td><td><input type="number" class="pq" value= "1"></td><td></td><td><a class ="text-secondary del_prod" href = "#"><i class ="fas fa-trash"><i></a></td></tr>');
 }
 
 function calculateSale()

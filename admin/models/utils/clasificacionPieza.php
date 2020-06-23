@@ -7,7 +7,7 @@
       * @Version:    $Rev:$ 1.0
       * @Developer:  Marlon Anthony Bendliss
    **/
-    
+
    namespace Ajepp\Utils;
 
    use \Ajepp\DB\cruddb as db;
@@ -20,15 +20,15 @@
        {
            $this->db = new db();
        }
-   
+
 
        public function getClasificacionPieza()
        {
             $clasificacion = $this->db->query("SELECT * FROM `clasificacion_pieza` WHERE 1");
 
             $list = '';
-
-            while ($cla = $clasificacion->result->fetch_object()) 
+            
+            while ($cla = $clasificacion->result->fetch_object())
             {
                 $list.= '<option value="'.$cla->id.'">'.$cla->pi_nombre.'</option>';
             }

@@ -9,7 +9,7 @@
     **/
 
   namespace Ajepp\Controllers;
-  
+
   use Ajepp\Models\piezasVehiculoModel as piezasVehiculoModel;
 
   class piezasVehiculoController
@@ -36,7 +36,7 @@
                <td>'.$pie->pie_clasi.'</td>
                <td>'.$pie->pie_nombre.'</td>
                <td>'.$pie->pie_descripcion.'</td>
-              
+
                <td class = "">
                   <a class ="text-warning edit" href="#" data-id = "'.$pie->id.'"><i class="fas fa-edit"></i></a>
                   <a class ="text-danger delete" href="#" data-id = "'.$pie->id.'"><i class="fas fa-trash"></i></a>
@@ -51,8 +51,8 @@
 
     public function addpiezasVehiculo($data)
     {
-        $add = $this->model->addpiezasVehiculo($data);  
-        return $add;     
+        $add = $this->model->addpiezasVehiculo($data);
+        return $add;
     }
 
     public function getpiezasVehiculo($id)
@@ -69,10 +69,46 @@
          return $rsp;
       }
 
+      public function getpiezasVehiculoFiltro($marca, $modelo, $fechas, $motor, $clas)
+        {
+           $pieza = $this->model->getpiezasVehiculoFiltro($marca, $modelo, $fechas, $motor, $clas);
+           $list = array();
+           if(!empty($pieza))
+           {
+           while($piezas = $pieza->result->fetch_object())
+           {
+             $list []=(object) array("pieza"=>$piezas->pie_nombre);
+           }
+            }
+         else{
+           $list []=(object) array("pieza"=>null);
+         }
+           return $list;
+
+        }
+
+        public function getpiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre)
+          {
+             $pieza = $this->model->getpiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre);
+             $list = array();
+             if(!empty($pieza))
+             {
+             while($piezas = $pieza->result->fetch_object())
+             {
+               $list []=(object) array("pieza"=>$piezas->pie_nombre, "descripcion" =>$piezas->pie_descripcion);
+             }
+              }
+           else{
+             $list []=(object) array("pieza"=>null);
+           }
+             return $list;
+
+          }
+
       public function editpiezasVehiculo($data)
       {
          $edit = $this->model->editpiezasVehiculo($data);
-         return $edit;     
+         return $edit;
       }
 
       public function deletepiezasVehiculo($id)

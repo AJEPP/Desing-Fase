@@ -14,10 +14,30 @@
     use Ajepp\Utils\cliente as cliente;
     $pos = new ctrl();
     $cliente = new cliente();
+
+    use Ajepp\Utils\modeloVehiculo as model;
+    use Ajepp\Utils\marcaVehiculo as marca;
+    use Ajepp\Utils\clasificacionPieza as clasi;
+    use Ajepp\Controllers\piezasVehiculoController as controller;
+    use Ajepp\Models\piezasVehiculoModel as usmd;
+
+    $mod = new model();
+    $mar = new marca();
+    $cla = new clasi();
+    $ctr = new controller();
+    $depar = new usmd();
 ?>
 
 <div class="container-fluid">
     <!-- <h3 class="text-dark mb-4">Ventas</h3> -->
+    <div class="row justify-content-end">
+
+      <div class="col-md-4 text-right">
+        <button class="btn btn-info" id="buscarpiezaVehiculoModal" data-toggle="modal" data-target=".buscar_pieza"><i class="fas fa-plus"></i> Buscar Pieza</button>
+      </div>
+
+    </div>
+
     <div class="row">
         <div class="col-md-4">
             <div class="card shadow">
@@ -85,12 +105,24 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-8 item-list"
+              <div class="slimScrollDiv" style="position: relative; overflow-y: auto; width: auto; height: 530px;">
+              <div class="items" style="overflow: auto; width: auto; height: 100%;">
+                  <div style="text-align: center;">
+                    <div class="" id="addProductos">
+
+                    </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      <!--  <div class="col-md-8 item-list"
             <div class="slimScrollDiv" style="position: relative; overflow-y: auto; width: auto; height: 530px;">
             <div class="items" style="overflow: auto; width: auto; height: 100%;">
                 <div style="text-align: center;">
-                        <?php 
-
+                        <?php
+/*
                             $brands = $pos->getBrandsList();
                             foreach($brands as $brand)
                             {
@@ -98,16 +130,17 @@
                                 <span class="bg-img">';
                                     echo $brand->mar_img == null ? '<img src="http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/default_product.png" alt="'.$brand->marca_vehiculo.'" style="width: 100px; height: 100px;">' : '<img src="http://'.$_SERVER['SERVER_NAME'].'/views/assets/img/'.$brand->mar_img.'" alt="'.$brand->marca_vehiculo.'" style="width: 100px; height: 100px;">';
                                 echo '  </span>
-                                    <span>  
+                                    <span>
                                         <span>'.$brand->marca_vehiculo.'</span>
                                     </span>
                                 </button>';
-                            }
+                            }*/
                         ?>
                     </div>
                 </div>
             </div>
         </div>
+      -->
     </div>
 </div>
 
@@ -186,7 +219,7 @@
     </div>
   </div>
 </div>
-
+<!--
 <div class="modal fade bd-example-modal-lg" id="productsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -224,6 +257,122 @@
             </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+-->
+<!-- Muestra los productos por el filtro-->
+
+<div class="modal fade bd-example-modal-lg" id="productsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Buscar productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="carouselExampleInterval" class="carousel slide" data-ride="false">
+            <div class="carousel-inner item-list">
+                <div class="carousel-item">
+                    <div class="spinner-border m-5" role="status" id="products_loading">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="slimScrollDiv hide" id="slimprod" style="position: relative; overflow-y: auto; width: auto; height: 300px;">
+                        <div class="items" style="overflow: auto; width: auto; height: 100%;">
+                            <div style="text-align: center;" id="product_cont">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal termina Aqui-->
+<div class="modal fade bd-example-modal-lg buscar_pieza" id="BuscarPiezaVehiculo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Buscar Pieza de Vehiculo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return false;" id="buscar_piezaVehiculo">
+          <div class="row justify-content-center">
+
+            <div class="col-md-6">
+              <div class="form-group">
+              <label class="bmd-label-floating">Marca Vehiculo</label>
+                <select name="marca_vehiculo_id" data-placeholder="Tipo vehiculo" class="chosen-select" id="marca_vehiculo_buscar">
+                    <?php $mar->getMarcavehiculo(); ?>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+              <label class="bmd-label-floating">Modelo vehiculo</label>
+                <select name="modelo_vehiculo_id" data-placeholder="Tipo vehiculo" class="form-control" id="tipo_vehiculo_buscar">
+                    <!-- <option value=""></option> -->
+                    <?php //$mod->getModelovehiculo(); ?>
+                </select>
+              </div>
+            </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                <label class="bmd-label-floating">Año Vehiculo</label>
+                  <select name="anio_vehiculo_id" data-placeholder="Año vehiculo" class="form-control" id="anio_vehiculo_buscar">
+                      <!-- <option value=""></option> -->
+                      <?php //$mod->getModelovehiculo(); ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                <label class="bmd-label-floating">Tamaño de Motor</label>
+                  <select name="motor_vehiculo_id" data-placeholder="Motor del vehiculo" class="form-control" id="motor_vehiculo_buscar">
+                      <!-- <option value=""></option> -->
+                      <?php //$mod->getModelovehiculo(); ?>
+                  </select>
+                </div>
+              </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+              <label class="bmd-label-floating">Clasificación Pieza</label>
+                <select name="clasificacion_pieza_buscar" data-placeholder="Tipo vehiculo" class="chosen-select" id="clasificacion_pieza_buscar">
+                    <!-- <option value=""></option> -->
+                    <?php $cla->getClasificacionPieza(); ?>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Nombre pieza</label>
+                  <select class="form-control" name="pie_nombre_buscar" id="pie_nombre_buscar">
+
+                  </select>
+                <!--  <input type="text" class="form-control" name="pie_nombre" id="pie_nombre_buscar"> -->
+                </div>
+            </div>
+
+
+          </div>
+          <input type="hidden" id="id_buscar" name="id">
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary buscar_pieza" id="buscar_" >Buscar</button>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </div>

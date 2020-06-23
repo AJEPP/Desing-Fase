@@ -8,8 +8,8 @@
     * @Developer:  Jose Daniel quijano
     **/
   namespace Ajepp\Models;
- 
-  use Ajepp\DB\cruddb as crud;
+
+  use Ajepp\DB\crudDb as crud;
   class DepartamentoModel
   {
     private $bd;
@@ -26,15 +26,15 @@
     }
 
     public function addDepartamento($data)
-    {    
+    {
         $depa = $this->bd->query("INSERT INTO `departamento_ajepp`(`dep_nombre`, `dep_locacion`) VALUES ('".$data->dep_nombre."','".$data->dep_locacion."')");
-        
+
         // echo "INSERT INTO `departamento_ajepp`(`dep_nombre`, `dep_locacion`) VALUES ('".$data->dep_nombre."','".$data->dep_locacion."')";
     }
 
     public function getDepartamento($id)
     {
-        $dep = $this->bd->query("SELECT * FROM `departamento_ajepp` WHERE id = ".$id); 
+        $dep = $this->bd->query("SELECT * FROM `departamento_ajepp` WHERE id = ".$id);
         return $dep;
         // $sql = "SELECT * FROM `departamento_ajepp` WHERE id = ".$id;
         // return $sql;
@@ -42,7 +42,7 @@
 
     public function editDepartamento($data)
     {
-     
+
         $dep = $this->bd->query("UPDATE `departamento_ajepp` SET `dep_nombre`='".$data->dep_nombre."', `dep_locacion`='".$data->dep_locacion."'  WHERE id = ".$data->id);
         //   echo "UPDATE `Departamento_vehiculo` SET `nombre`='".$data->nombre."',`id`='".$data->id."' WHERE id = ".$data->id;
     }
