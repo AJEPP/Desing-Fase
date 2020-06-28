@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2020 at 11:17 PM
+-- Generation Time: Jun 28, 2020 at 06:51 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.14
 
@@ -214,6 +214,24 @@ CREATE TABLE `datos_contacto_cliente` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `datos_vehiculos`
+--
+
+CREATE TABLE `datos_vehiculos` (
+  `id` int(11) DEFAULT NULL,
+  `num_motor` varchar(50) NOT NULL,
+  `chasis` varchar(50) NOT NULL,
+  `anio` date NOT NULL,
+  `marca` varchar(100) NOT NULL,
+  `modelo` varchar(100) NOT NULL,
+  `cuerpo` varchar(100) NOT NULL,
+  `tipo` varchar(100) NOT NULL,
+  `modelo_vehiculo_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `departamento_ajepp`
 --
 
@@ -373,14 +391,45 @@ CREATE TABLE `modelo_vehiculo` (
 INSERT INTO `modelo_vehiculo` (`id`, `marca_vehiculo_id`, `mod_vehiculo`, `mod_anio`, `mod_img`, `procedencia`, `mob_chasis_tipo`, `mob_motor_cod`, `mob_motor_tam`, `mod_anio_termina`) VALUES
 (1, 1, 'Elentra III', 2001, NULL, 'Corea del Sur', 'Sedan', '', '1.8 (132 Hp) ', 2007),
 (2, 2, 'K3000S', 2000, NULL, 'Corea del Sur', '', '', NULL, NULL),
-(3, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback ', 'G4HCE', '1.0  AT (58 Hp)', 2010),
+(3, 1, 'Atos 01', 2001, NULL, 'Corea del Sur', 'Hatchback ', 'G4HCE', '1000 CC AT', 2003),
 (4, 1, 'Atos ', 2003, NULL, 'Corea del Sur', 'Hatchback ', 'G4HD', 'Prime 1.1  AT (59 Hp)', 2011),
-(5, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HCE', '1.0  MT (58 Hp)', 2010),
-(6, 1, 'Atos', 1997, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HC', 'Genesis 1.0  AT (56 Hp)', 2002),
-(7, 1, 'Atos', 1997, NULL, ' \r\nCorea del Sur', 'Hatchback ', 'G4HC', ' Genesis 1.0  MT (56 Hp)', 2002),
+(5, 1, 'Atos 01', 2001, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HCE', '1000 CC MT ', 2003),
+(6, 1, 'Atos 98', 1997, NULL, 'Corea del Sur', 'Hatchback  ', 'G4HC', '1000 CC AT', 2002),
+(7, 1, 'Atos 98', 1997, NULL, ' \r\nCorea del Sur', 'Hatchback ', 'G4HC', '1000 CC MT', 2002),
 (8, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback', NULL, 'Prime 1.0  AT (58 Hp)', 2011),
 (9, 1, 'Atos', 2003, NULL, 'Corea del Sur', 'Hatchback', 'G4HD', 'Prime 1.1  MT (59 Hp) ', 2011),
-(10, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback', NULL, 'Prime 1.0  MT (58 Hp)', 2011);
+(10, 1, 'Atos', 2001, NULL, 'Corea del Sur', 'Hatchback', NULL, 'Prime 1.0  MT (58 Hp)', 2011),
+(11, 1, 'Atoz Prime 99', 1999, NULL, 'Corea del Sur', 'Hatchback', NULL, '1000 CC', 2000),
+(12, 1, 'Atoz Prime 01', 2001, NULL, 'Corea del Sur', 'Sedan 5PTS', NULL, '1000 CC', 2003),
+(13, 1, 'Atoz Prime 06', 2005, NULL, 'Corea del Sur', 'Sedan 5PTS', NULL, '1000 CC ', 2007),
+(14, 1, 'Atoz Prime 06', 2005, NULL, 'Corea del Sur', 'Sedan 5PTS', NULL, '1100 CC', 2007),
+(15, 1, 'Atoz Prime 07', 2007, NULL, 'Corea del Sur', 'Sedan 5PTS', NULL, '1000 CC', 2011),
+(16, 1, 'Atoz Prime 07', 2007, NULL, 'Corea del Sur', 'Sedan 5PTS', NULL, '1100 CC', 2011),
+(17, 1, 'Accent 06', 2005, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '1400 CC', 2006),
+(18, 1, 'Accent 06', 2005, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '1600 CC', 2006),
+(19, 1, 'Accent 06', 2006, NULL, 'Corea del sur', 'Sedan 4PTS', NULL, '1400 CC', 2010),
+(20, 1, 'Accent 06', 2006, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '1500 CC', 2010),
+(21, 1, 'Accent 06', 2006, NULL, 'Coreal del Sur', 'Sedan 4PTS', NULL, '1600 CC', 2010),
+(22, 1, 'Accent 15', 2014, NULL, 'Corea del Sur', 'Sedan 4-5PTS', NULL, '1600 CC', 2018),
+(23, 1, 'Accent 15', 2014, NULL, 'Corea del Sur', 'Sedan 4-5PTS', NULL, '1400 CC', 2018),
+(24, 1, 'Accent/Solaris 14', 2015, NULL, 'Corea del Sur', 'Sedan 4-5PTS', NULL, '1400 CC', 2016),
+(25, 1, 'Eletran 96', 1995, NULL, 'Corea del Sur', 'Sedan 4-5PTS Wagon', NULL, '1500 CC', 2000),
+(26, 1, 'Elentra 96', 1995, NULL, 'Corea del Sur', 'Sedan 4-5PTS Wagon', NULL, '1600 CC', 2000),
+(27, 1, 'Coreal de Sur', 1995, NULL, 'Corea del Sur', 'Sedan 4-5PTS Wagon', NULL, '1900 CC', 2000),
+(28, 1, 'Elentra 96', 1995, NULL, 'Corea del Sur', 'Sedan 4-5PTS Wagon', NULL, '2000 CC', 2000),
+(29, 1, 'Elentra 96', 1995, NULL, 'Corea del Sur', 'Sedan 4-5PTS Wagon', NULL, '1800 CC', 2000),
+(30, 1, 'Elentra 00', 2000, NULL, 'Corea del Sur', 'Sedan 4-5PTS', NULL, '1600 CC', 2006),
+(31, 1, 'Elentra 00', 2000, NULL, 'Corea del Sur', 'Sedan 4-5PTS Wagon', NULL, '1800 CC', 2006),
+(32, 1, 'Elentra 00', 2000, NULL, 'Corea del Sur', 'Sedan 4-5PTS Wagon', NULL, '2000 CC', 2006),
+(33, 1, 'Elentra 06', 2006, NULL, 'Corea del Sur', '\r\nSedan 4PTS', NULL, '1600 CC', 2011),
+(34, 1, 'Elentra 06', 2006, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '1600 CC - Gamma', 2011),
+(35, 1, 'Elentra 06', 2006, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '2000 CC', 2011),
+(36, 1, 'Elentra 11', 2011, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '1800 CC', 2013),
+(37, 1, 'Elentra 11', 2011, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '2000 CC', 2013),
+(38, 1, 'Elentra 14', 2013, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '1800 CC', 2015),
+(39, 1, 'Elentra 14', 2013, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '2000 CC', 2015),
+(40, 1, 'Elentra 16', 2015, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '2000 CC', 2018),
+(41, 1, 'Elentra 16', 2015, NULL, 'Corea del Sur', 'Sedan 4PTS', NULL, '1600 CC', 2018);
 
 -- --------------------------------------------------------
 
@@ -894,6 +943,12 @@ ALTER TABLE `datos_contacto_cliente`
   ADD KEY `fk_datos_contacto_cliente_cliente1_idx` (`cliente_id`);
 
 --
+-- Indexes for table `datos_vehiculos`
+--
+ALTER TABLE `datos_vehiculos`
+  ADD KEY `modelo_vehiculo_id` (`modelo_vehiculo_id`);
+
+--
 -- Indexes for table `departamento_ajepp`
 --
 ALTER TABLE `departamento_ajepp`
@@ -1112,7 +1167,7 @@ ALTER TABLE `marca_vehiculo`
 -- AUTO_INCREMENT for table `modelo_vehiculo`
 --
 ALTER TABLE `modelo_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `personal_ajepp`
@@ -1224,6 +1279,12 @@ ALTER TABLE `contacto_proveedor`
 --
 ALTER TABLE `datos_contacto_cliente`
   ADD CONSTRAINT `fk_datos_contacto_cliente_cliente1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `datos_vehiculos`
+--
+ALTER TABLE `datos_vehiculos`
+  ADD CONSTRAINT `datos_vehiculos_ibfk_1` FOREIGN KEY (`modelo_vehiculo_id`) REFERENCES `modelo_vehiculo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `detalles_pieza_bodega`
