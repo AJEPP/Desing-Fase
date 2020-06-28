@@ -1,0 +1,3 @@
+Se creara otra tabla que guardara los numeros Vin y numeros de motores y otras datos, de registros que conseguiran los 
+clientes, La tabla tendra una realacion con la table de modelos_vehiculos pero no afecta el codigo actual
+del sistema
