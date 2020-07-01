@@ -36,6 +36,9 @@
                     <td>'.$modelo->mod_vehiculo.'</td>
                     <td>'.$modelo->mod_anio.'</td>
                     <td>'.$modelo->procedencia.'</td>
+                    <td>'.$modelo->mob_chasis_tipo.'</td>
+                    <td>'.$modelo->mob_motor_tam.'</td>
+                    <td>'.$modelo->mod_anio_termina.'</td>
                     <td class = "">
                         <a class ="text-warning edit" href="#" data-id = "'.$modelo->id.'"><i class="fas fa-edit"></i></a>
                         <a class ="text-danger delete" href="#" data-id = "'.$modelo->id.'"><i class="fas fa-trash"></i></a>

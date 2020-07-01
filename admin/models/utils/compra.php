@@ -12,7 +12,7 @@
 
    use \Ajepp\DB\cruddb as db;
 
-   class PiezaVehiculo
+   class Compra
    {
        private $db;
 
@@ -22,15 +22,16 @@
        }
 
 
-       public function getPiezaVehiculo()
+       public function getPiezasModelos()
        {
-            $pieza = $this->db->query("SELECT * FROM `piezas_vehiculo` WHERE 1");
+            $piezas = $this->db->query("SELECT * FROM `piezas_vehiculo` WHERE 1");
 
             $list = '';
 
-            while ($pie = $pieza->result->fetch_object())
+            $list.= '<option value="0">Selecione modelo</option>';
+            while ($pie = $piezas->result->fetch_object())
             {
-                $list.= '<option value="'.$pie->id.'">'.$pie->pie_nombre.'</option>';
+                $list.= '<option value="'.$pie->pie_numero.'">'.$pie->pie_numero.'</option>';
             }
 
             echo $list;

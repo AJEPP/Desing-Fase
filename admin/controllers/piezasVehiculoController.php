@@ -38,8 +38,8 @@
                <td>'.$pie->pie_descripcion.'</td>
 
                <td class = "">
-                  <a class ="text-warning edit" href="#" data-id = "'.$pie->id.'"><i class="fas fa-edit"></i></a>
-                  <a class ="text-danger delete" href="#" data-id = "'.$pie->id.'"><i class="fas fa-trash"></i></a>
+                  <a class ="text-warning editPieza" href="#" data-id = "'.$pie->id.'"><i class="fas fa-edit"></i></a>
+                  <a class ="text-danger deletePieza" href="#" data-id = "'.$pie->id.'"><i class="fas fa-trash"></i></a>
                </td>
          </tr>';
 
@@ -87,15 +87,15 @@
 
         }
 
-        public function getpiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre)
+        public function getpiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre, $num_motor, $chasis)
           {
-             $pieza = $this->model->getpiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre);
+             $pieza = $this->model->getpiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre, $num_motor, $chasis);
              $list = array();
              if(!empty($pieza))
              {
              while($piezas = $pieza->result->fetch_object())
              {
-               $list []=(object) array("pieza"=>$piezas->pie_nombre, "descripcion" =>$piezas->pie_descripcion);
+               $list []=(object) array("nombre"=>$piezas->nombre, "descripcion" =>$piezas->descripcion, "precio_tienda" => $piezas->precio_tienda, "t_id"=>$piezas->t_id);
              }
               }
            else{

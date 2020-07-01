@@ -42,6 +42,7 @@
     public function getModeloVehiculoAnio($id)
     {
         $modelo = $this->bd->query("SELECT DISTINCT `mod_anio` AS 'inicio', `mod_anio_termina` AS 'termina' FROM `modelo_vehiculo` WHERE `mod_vehiculo` ='".$id."' ORDER BY `mod_anio` asc");
+
         return $modelo;
         // $sql = "SELECT * FROM `modelo_vehiculo` WHERE id = ".$id;
         // return $sql;

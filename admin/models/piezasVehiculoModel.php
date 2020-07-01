@@ -53,14 +53,38 @@
         // return $sql;
     }
 
-    public function getPiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre)
+    public function getPiezasVehiculoEspecifi($marca, $modelo, $fechas, $motor, $clas, $nombre, $num_motor, $chasis)
     {
         $fecha = explode("-", $fechas);
+        $sql = "SELECT
+                        pv.pie_nombre as nombre,
+                        pv.pie_descripcion as descripcion,
+                        detat.pie_precio as precio_tienda,
+                        detat.id as t_id
+                    FROM
+                        `piezas_vehiculo` as pv
+                    INNER JOIN `clasificacion_pieza` ON pv.clasificacion_pieza_id = clasificacion_pieza.id
+                    INNER JOIN `modelo_vehiculo` ON modelo_vehiculo.id = pv.modelo_vehiculo_id
+                    INNER JOIN marca_vehiculo ON marca_vehiculo.id = modelo_vehiculo.marca_vehiculo_id
+                    INNER JOIN `detalles_pieza_tienda` as detat on pv.id = detat.piezas_vehiculo_id
+                    WHERE ";
+        if($num_motor == 'null' && $chasis != 'null'){
+          $sql .= " marca_vehiculo.id = ".$marca." AND modelo_vehiculo.mod_vehiculo ='".$modelo."' AND modelo_vehiculo.mod_anio = '".$fecha[0]."' AND modelo_vehiculo.mod_anio_termina = '".$fecha[1]."' AND modelo_vehiculo.mob_motor_tam = '".$motor."' AND clasificacion_pieza.id = ".$clas." AND pv.pie_nombre = '".$nombre."'";
+        }
+
+        elseif(($num_motor != 'null' && $chasis == 'null'))
+        {
+          $sql .= " marca_vehiculo.id = ".$marca." AND modelo_vehiculo.mod_vehiculo ='".$modelo."' AND modelo_vehiculo.mod_anio = '".$fecha[0]."' AND modelo_vehiculo.mod_anio_termina = '".$fecha[1]."' AND modelo_vehiculo.mob_motor_tam = '".$motor."' AND clasificacion_pieza.id = ".$clas." AND pv.pie_nombre = '".$nombre."'";
+        }
+        elseif($num_motor != 'null' && $chasis != 'null')
+        {
+          $sql .= " marca_vehiculo.id = ".$marca." AND modelo_vehiculo.mod_vehiculo ='".$modelo."' AND modelo_vehiculo.mod_anio = '".$fecha[0]."' AND modelo_vehiculo.mod_anio_termina = '".$fecha[1]."' AND modelo_vehiculo.mob_motor_tam = '".$motor."' AND clasificacion_pieza.id = ".$clas." AND pv.pie_nombre = '".$nombre."'";
+        }
+        else{
+            $sql .= " marca_vehiculo.id = ".$marca." AND modelo_vehiculo.mod_vehiculo ='".$modelo."' AND modelo_vehiculo.mod_anio = '".$fecha[0]."' AND modelo_vehiculo.mod_anio_termina = '".$fecha[1]."' AND modelo_vehiculo.mob_motor_tam = '".$motor."' AND clasificacion_pieza.id = ".$clas." AND pv.pie_nombre = '".$nombre."'";
+        }
         //$pieza = $this->bd->query("SELECT DISTINCT `pie_nombre` from `piezas_vehiculo` WHERE piezas_vehiculo.clasificacion_pieza_id=".$clas);
-      $pieza = $this->bd->query("SELECT `pie_nombre`, `pie_descripcion` from `piezas_vehiculo` inner join `clasificacion_pieza` on piezas_vehiculo.clasificacion_pieza_id = clasificacion_pieza.id
-                                    inner join `modelo_vehiculo` on modelo_vehiculo.id = piezas_vehiculo.modelo_vehiculo_id inner join marca_vehiculo on
-                                    marca_vehiculo.id = modelo_vehiculo.marca_vehiculo_id where marca_vehiculo.id =".$marca." AND modelo_vehiculo.mod_vehiculo='".$modelo."' AND
-                                    modelo_vehiculo.mod_anio ='".$fecha[0]."' and modelo_vehiculo.mod_anio_termina='".$fecha[1]."' and modelo_vehiculo.mob_motor_tam ='".$motor."' and clasificacion_pieza.id=".$clas." and piezas_vehiculo.pie_nombre='".$nombre."'");
+        $pieza = $this->bd->query($sql);
         return $pieza;
         // $sql = "SELECT * FROM `departamento_ajepp` WHERE id = ".$id;
         // return $sql;

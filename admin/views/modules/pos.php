@@ -337,14 +337,28 @@
 
               <div class="col-md-6">
                 <div class="form-group">
-                <label class="bmd-label-floating">Tamaño de Motor</label>
-                  <select name="motor_vehiculo_id" data-placeholder="Motor del vehiculo" class="form-control" id="motor_vehiculo_buscar">
+                <label class="bmd-label-floating">Tamaño del Motor</label>
+                  <select name="tamanio_motor" data-placeholder="Año vehiculo" class="form-control" id="tam_motor_buscar">
                       <!-- <option value=""></option> -->
                       <?php //$mod->getModelovehiculo(); ?>
                   </select>
                 </div>
               </div>
 
+              <div class="col-md-6">
+                <div class="form-group">
+                <label class="bmd-label-floating">Numero del Motor</label>
+                  <input type="text" name="num_motor" placeholder="Numero del Motor" class="form-control" id="num_motor_buscar">
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                <label class="bmd-label-floating">Numero del Chasis</label>
+                  <input type="text" name="num_chasis" placeholder="Numero del Chasis" class="form-control" id="num_chasis_buscar">
+
+                </div>
+              </div>
             <div class="col-md-6">
               <div class="form-group">
               <label class="bmd-label-floating">Clasificación Pieza</label>

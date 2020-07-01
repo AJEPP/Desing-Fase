@@ -58,7 +58,7 @@ $(document).ready(function() {
         });
     });
 
-    $(document).on('click', '.edit', function() {
+    $(document).on('click', '.editPieza', function() {
 
         // id = $(this).serialize('id');
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
         });
     });
 
-    $(document).on('click', '.delete', function() {
+    $(document).on('click', '.deletePieza', function() {
 
         var con = confirm("En realidad desea eliminar este tipoVehiculo?");
 

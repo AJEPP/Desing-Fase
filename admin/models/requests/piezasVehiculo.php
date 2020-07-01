@@ -63,7 +63,7 @@
 
       case 'get_piezasVehiculoEspeci':
 
-         $edit = $controller->getPiezasVehiculoEspecifi($_POST['marca'], $_POST['modelo'], $_POST['fechas'], $_POST['motor'], $_POST['clasific'], $_POST['nombre']);
+         $edit = $controller->getPiezasVehiculoEspecifi($_POST['marca'], $_POST['modelo'], $_POST['fechas'], $_POST['motor'], $_POST['clasific'], $_POST['nombre'], $_POST['num_motor'], $_POST['chasis']);
 
          $resp = (object) array('data' => $edit);
 

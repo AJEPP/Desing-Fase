@@ -32,6 +32,7 @@
                 if(password_verify($data->contrasenia, $user->contrasenia))
                 {
                     $_SESSION['user'] = $user;
+                    
 
                     $resp = array('login' => 'ok', 'name' => $user->per_nombre.' '.$user->per_apellido, 'message' => 'yes');
                 }
@@ -43,7 +44,7 @@
            else
            {
                 $resp = array('login' => 'no', 'name' => $data[0]->usuario, 'message' => 'no');
-           } 
+           }
 
            return $resp;
        }

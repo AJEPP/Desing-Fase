@@ -5,13 +5,13 @@
    * @File:       modeloVehiculo.php
    * @Date:       2020-03-25T19:26:04
    * @Version:    $Rev:$ 1.0
-   * @Developer:   Jose Daniel quijano 
+   * @Developer:   Jose Daniel quijano
    **/
-    
+
     use Ajepp\Utils\marcaVehiculo as marca;
     use Ajepp\Controllers\modeloVehiculoController as controller;
     use Ajepp\Models\modeloVehiculoModel as usmd;
-   
+
     $mar = new marca();
     $ctr = new controller();
     $depar = new usmd();
@@ -40,6 +40,9 @@
                             <th>Modelo vehiculo</th>
                             <th>Año</th>
                             <th>Procedencia</th>
+                            <th>Cuerpo</th>
+                            <th>Tamaño Motor</th>
+                            <th>Fin Producción</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -88,7 +91,7 @@
                   <input type="text" class="form-control" name="mod_anio">
                 </div>
             </div>
-            
+
             <div class="col-md-6">
               <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Procedencia</label>
@@ -143,14 +146,14 @@
                   <input type="text" class="form-control" name="mod_anio" id="mod_anio">
                 </div>
             </div>
-            
+
             <div class="col-md-6">
               <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Procedencia</label>
                   <input type="text" class="form-control" name="procedencia" id="procedencia">
                 </div>
             </div>
-            
+
           </div>
           <input type="hidden" id="id" name="id">
         </form>
