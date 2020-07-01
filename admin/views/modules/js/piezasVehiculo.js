@@ -259,7 +259,7 @@ function buscarParte(){
       //console.log(value);
           //list += '<option value="'+value.pieza+'">'+value.pieza+'</option>';
           //$("#product_cont").append('<button class="btn btn-both btn-flat product" data-store = "' + data.products[i].in_store + '" data-were = "' + data.products[i].in_were + '" data-id = "' + data.products[i].id + '" data-prod = "' + data.products[i].prod + '"> <span class="bg-img"><img src="' + data.products[i].pie_img + '" alt="' + data.products[i].pie_nombre + '" style="width: 100px; height: 100px;"></span><span><span>' + data.products[i].pie_nombre + '</span></span></button>');
-          $("#addProductos").append('<button class="btn btn-both btn-flat product" data-store = "' + value.t_id+ '" data-were = "' + 10 + '" data-id = "' +value.t_id + '" data-prod = "' + value.nombre + '"> <span class="bg-img"><img src="' + + '" alt="' + value.nombre + '" style="width: 100px; height: 100px;"></span><span><span>'+ value.nombre +" "+ value.descripcion + '</span></span></button>');
+          $("#addProductos").append("<button class='btn btn-both btn-flat product' data-store = '" + value.t_id+ "' data-were = '" + 10 + "' data-id = '" + value.t_id + "' data-prod = '" + JSON.stringify(value) + "'> <span class='bg-img'><img src='" + + "' alt='" + value.nombre + "' style='width: 100px; height: 100px;'></span><span><span>" + value.nombre +" "+ value.descripcion + "</span></span></button>");
       });
       //$("#pie_nombre_buscar").append(list);
   });

@@ -95,11 +95,12 @@
              {
              while($piezas = $pieza->result->fetch_object())
              {
-               $list []=(object) array("nombre"=>$piezas->nombre, "descripcion" =>$piezas->descripcion, "precio_tienda" => $piezas->precio_tienda, "t_id"=>$piezas->t_id);
+               //$list []=(object) array("nombre"=>$piezas->nombre, "descripcion" =>$piezas->descripcion, "precio_tienda" => $piezas->precio_tienda, "t_id"=>$piezas->t_id);
+                 array_push($list, $piezas);
              }
-              }
+           }
            else{
-             $list []=(object) array("pieza"=>null);
+             $list = (object) array("pieza"=>null);
            }
              return $list;
 

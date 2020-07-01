@@ -161,7 +161,7 @@ function saveClient()
 function addProduct(data)
 {
   console.log(data);
-  $("#product_list").append('<tr><td>' + data + '</td><td><input type="number" class="pp" value= "1"></td><td><input type="number" class="pq" value= "1"></td><td></td><td><a class ="text-secondary del_prod" href = "#"><i class ="fas fa-trash"><i></a></td></tr>');
+  $("#product_list").append('<tr><td>' + data.nombre + '</td><td><input type="number" class="pp" value= "1"></td><td><input type="number" class="pq" value= "1"></td><td></td><td><a class ="text-secondary del_prod" href = "#"><i class ="fas fa-trash"><i></a></td></tr>');
 }
 
 function calculateSale()

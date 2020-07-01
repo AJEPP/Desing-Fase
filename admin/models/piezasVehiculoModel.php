@@ -66,7 +66,7 @@
                     INNER JOIN `clasificacion_pieza` ON pv.clasificacion_pieza_id = clasificacion_pieza.id
                     INNER JOIN `modelo_vehiculo` ON modelo_vehiculo.id = pv.modelo_vehiculo_id
                     INNER JOIN marca_vehiculo ON marca_vehiculo.id = modelo_vehiculo.marca_vehiculo_id
-                    INNER JOIN `detalles_pieza_tienda` as detat on pv.id = detat.piezas_vehiculo_id
+                    INNER JOIN `detalles_pieza_tienda` as detat on pv.pie_numero = detat.num_modelo_pieza
                     WHERE ";
         if($num_motor == 'null' && $chasis != 'null'){
           $sql .= " marca_vehiculo.id = ".$marca." AND modelo_vehiculo.mod_vehiculo ='".$modelo."' AND modelo_vehiculo.mod_anio = '".$fecha[0]."' AND modelo_vehiculo.mod_anio_termina = '".$fecha[1]."' AND modelo_vehiculo.mob_motor_tam = '".$motor."' AND clasificacion_pieza.id = ".$clas." AND pv.pie_nombre = '".$nombre."'";

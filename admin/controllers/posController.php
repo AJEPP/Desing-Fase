@@ -29,7 +29,7 @@
 
             while($product = $products->fetch_object())
             {
-                $product->filter = $product->pie_nombre.' - '.$product->pie_numero.' - '.$product->mod_vehiculo.' - '.$product->mod_anio.' - '.$product->marca_vehiculo;
+                $product->filter = $product->nombre.' - '.$product->pie_numero.' - '.$product->mod_vehiculo.' - '.$product->mod_anio.' - '.$product->marca_vehiculo;
                 array_push($list, $product);
             }
 

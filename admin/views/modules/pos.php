@@ -29,15 +29,6 @@
 ?>
 
 <div class="container-fluid">
-    <!-- <h3 class="text-dark mb-4">Ventas</h3> -->
-    <div class="row justify-content-end">
-
-      <div class="col-md-4 text-right">
-        <button class="btn btn-info" id="buscarpiezaVehiculoModal" data-toggle="modal" data-target=".buscar_pieza"><i class="fas fa-plus"></i> Buscar Pieza</button>
-      </div>
-
-    </div>
-
     <div class="row">
         <div class="col-md-4">
             <div class="card shadow">
@@ -105,18 +96,26 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-8">
+            <div class="row justify-content-end">
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-info" id="buscarpiezaVehiculoModal" data-toggle="modal" data-target=".buscar_pieza"><i class="fas fa-plus"></i> Buscar Pieza</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 item-list">
+                    <div class="slimScrollDiv" style="position: relative; overflow-y: auto; width: auto; height: 530px;">
+                        <div class="items" style="overflow: auto; width: auto; height: 100%;">
+                            <div style="text-align: center;">
+                                <div class="" id="addProductos">
 
-        <div class="col-md-8 item-list"
-              <div class="slimScrollDiv" style="position: relative; overflow-y: auto; width: auto; height: 530px;">
-              <div class="items" style="overflow: auto; width: auto; height: 100%;">
-                  <div style="text-align: center;">
-                    <div class="" id="addProductos">
-
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                </div>
+            </div>
+        </div>
       <!--  <div class="col-md-8 item-list"
             <div class="slimScrollDiv" style="position: relative; overflow-y: auto; width: auto; height: 530px;">
             <div class="items" style="overflow: auto; width: auto; height: 100%;">

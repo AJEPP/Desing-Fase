@@ -25,18 +25,26 @@
 
        public function getProducts()
        {
-          $products = $this->db->query("SELECT *, 
+          $products = $this->db->query("SELECT pv.pie_nombre as nombre,
+  		pv.pie_descripcion as descripcion,
+        pv.pie_numero,
+        mv.mod_vehiculo,
+        mv.mod_anio,
+        mh.marca_vehiculo,
+        (CASE WHEN ISNULL(detat.pie_precio) THEN 0 ELSE detat.pie_precio END) as precio_tienda,
+        (CASE WHEN ISNULL(detat.id) THEN 0 ELSE detat.id END) as t_id,
                                             (SELECT COUNT(*) 
                                             FROM detalles_pieza_bodega 
-                                            WHERE piezas_vehiculo_id = pv.id) 
+                                            WHERE num_modelo_pieza = pv.pie_numero) 
                                         as in_were, 
                                         (SELECT COUNT(*) 
                                             FROM detalles_pieza_tienda 
-                                            WHERE piezas_vehiculo_id = pv.id) 
+                                            WHERE num_modelo_pieza = pv.pie_numero) 
                                         as in_store 
                                         FROM piezas_vehiculo pv 
                                             INNER JOIN modelo_vehiculo mv ON pv.modelo_vehiculo_id = mv.id
                                             INNER JOIN marca_vehiculo mh ON mv.marca_vehiculo_id = mh.id
+                                            LEFT JOIN detalles_pieza_tienda detat ON detat.num_modelo_pieza = pv.pie_numero
                                         WHERE 1");
 
           return $products->result;
